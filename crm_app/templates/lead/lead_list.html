@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+
+<h2>Leads</h2>
+{% if is_admin %}
+<a href="{% url 'add-lead' %}"
+class="btn btn-primary">
+Add Lead
+</a>
+{% endif %}
+</div>
+
+<table class="table table-striped">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Customer</th>
+<th>Status</th>
+<th>Value</th>
+<th>Assigned</th>
+{% if is_admin %}
+<th>Action</th>
+{% endif %}
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for lead in leads %}
+
+<tr>
+
+<td>{{ lead.customer }}</td>
+
+<td>
+
+<span class="badge bg-primary">
+{{ lead.status }}
+</span>
+
+</td>
+
+<td>₹{{ lead.expected_value }}</td>
+
+<td>{{ lead.assigned_to }}</td>
+
+{% if is_admin %}
+<td>
+<a href="{% url 'update-lead' lead.id %}"
+class="btn btn-warning btn-sm">
+Edit
+</a>
+
+<a href="{% url 'delete-lead' lead.id %}"
+class="btn btn-danger btn-sm">
+Delete
+</a>
+</td>
+{% endif %}
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

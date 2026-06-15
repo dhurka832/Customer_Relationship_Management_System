@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>{{ customer.name }}</h3>
+
+<hr>
+
+<p>
+<b>Email:</b>
+{{ customer.email }}
+</p>
+
+<p>
+<b>Phone:</b>
+{{ customer.phone }}
+</p>
+
+<p>
+<b>Company:</b>
+{{ customer.company }}
+</p>
+
+<p>
+<b>City:</b>
+{{ customer.city }}
+</p>
+
+<p>
+<b>Status:</b>
+{{ customer.status }}
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-8">
+
+<div class="card">
+
+<div class="card-body">
+
+<h4>
+Lead History
+</h4>
+
+<table class="table">
+
+<tr>
+
+<th>Status</th>
+<th>Value</th>
+
+</tr>
+
+{% for lead in leads %}
+
+<tr>
+
+<td>{{ lead.status }}</td>
+
+<td>₹{{ lead.expected_value }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<div class="card-body">
+
+<h4>
+Follow-Ups
+</h4>
+
+<table class="table">
+
+<tr>
+
+<th>Date</th>
+<th>Notes</th>
+<th>Status</th>
+
+</tr>
+
+{% for followup in followups %}
+
+<tr>
+
+<td>{{ followup.Followup_date }}</td>
+
+<td>{{ followup.notes }}</td>
+
+<td>
+
+{% if followup.completed %}
+
+<span class="badge bg-success">
+Completed
+</span>
+
+{% else %}
+
+<span class="badge bg-warning">
+Pending
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    {% if is_admin %}
+        Admin Dashboard
+    {% else %}
+        Sales Executive Dashboard
+    {% endif %}
+</h2>
+
+<div class="row">
+
+    {% if is_admin %}
+        <div class="col-md-3">
+
+            <div class="card text-center">
+
+                <div class="card-body">
+
+                    <h5>Total Customers</h5>
+
+                    <h1>{{ total_customers }}</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+    {% endif %}
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-body">
+
+                <h5>Total Leads</h5>
+
+                <h1>{{ total_leads }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-body">
+
+                <h5>Won Leads</h5>
+
+                <h1>{{ won_leads }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<br> 
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-body">
+
+            <h5>Lost Leads</h5>
+
+            <h1>{{ lost_leads }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-center">
+
+            <div class="card-body">
+
+            <h5>Active Follow-Ups</h5>
+
+            <h1>{{ active_followups }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 mt-2">
+
+        <div class="card text-center">
+
+            <div class="card-body">
+
+            <h5>Potential Revenue</h5>
+
+            <h1>$ {{ potential_revenue }}</h1>
+
+            </div>
+
+        </div>
+
+    </div>
+</div> 
+
+{% endblock %}
