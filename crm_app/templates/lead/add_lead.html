@@ -9,7 +9,7 @@
   <form method="post">
     {% csrf_token %}
     {{form|crispy}}
-    <button class="btn btn-success">Save</button>
-    <a class="btn btn-secondary" href={% url 'lead-list' %}>Cancel</a>
+    <button class="btn btn-outline-success">Save</button>
+    <a class="btn btn-outline-secondary" href={% url 'lead-list' %}>Cancel</a>
   </form>
 {% endblock%}
