@@ -132,7 +132,7 @@ POST /api/token/refresh/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/crm-management-system.git
+git clone https://github.com/dhurka832/crm-management-system.git
 ```
 
 ### Navigate to Project Folder
