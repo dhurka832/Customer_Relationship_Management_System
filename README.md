@@ -247,5 +247,3 @@ Through this project, I gained hands-on experience with:
 - API Testing with Postman
 
 ---
-
-MCA Student | Python & Django Developer
