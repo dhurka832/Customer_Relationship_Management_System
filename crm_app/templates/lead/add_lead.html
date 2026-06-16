@@ -2,14 +2,21 @@
 
 {% load crispy_forms_tags %}
 
-
 {% block content %}
+
   <h2>Add Lead</h2>
   <hr>
+
   <form method="post">
+
     {% csrf_token %}
+
     {{form|crispy}}
+
     <button class="btn btn-outline-success">Save</button>
+
     <a class="btn btn-outline-secondary" href={% url 'lead-list' %}>Cancel</a>
+
   </form>
+  
 {% endblock%}

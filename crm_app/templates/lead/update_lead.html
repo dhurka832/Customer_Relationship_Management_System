@@ -2,29 +2,31 @@
 
 {% load crispy_forms_tags %}
 
-
 {% block content %}
 
-<div class="card">
+    <div class="card">
 
-<div class="card-body">
+        <div class="card-body">
 
-<h3>Update Lead</h3>
-<hr>
-<form method="POST">
+        <h3>Update Lead</h3>
+        <hr>
 
-{% csrf_token %}
+        <form method="POST">
 
-{{ form|crispy }}
+            {% csrf_token %}
 
-<button class="btn btn-success">
-Update Lead
-</button>
-<a class="btn btn-secondary" href={% url 'lead-list' %}>Cancel</a>
-</form>
+            {{ form|crispy }}
 
-</div>
+            <button class="btn btn-success">
+            Update Lead
+            </button>
 
-</div>
+            <a class="btn btn-secondary" href={% url 'lead-list' %}>Cancel</a>
+            
+        </form>
+
+        </div>
+
+    </div>
 
 {% endblock %}

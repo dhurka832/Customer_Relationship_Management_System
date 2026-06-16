@@ -2,35 +2,35 @@
 
 {% block content %}
 
-<div class="card">
+    <div class="card">
 
-<div class="card-body text-center">
+        <div class="card-body text-center">
 
-<h3>
-Delete Customer?
-</h3>
+            <h3>
+            Delete Customer?
+            </h3>
 
-<p>
-"{{ customer.name }}"
-</p>
+            <p>
+            "{{ customer.name }}"
+            </p>
 
-<form method="POST">
+            <form method="POST">
 
-{% csrf_token %}
+                {% csrf_token %}
 
-<button class="btn btn-outline-danger">
-Delete
-</button>
+                <button class="btn btn-outline-danger">
+                Delete
+                </button>
 
-<a href="{% url 'customer-list' %}"
-class="btn btn-outline-secondary">
-Cancel
-</a>
+                <a href="{% url 'customer-list' %}"
+                class="btn btn-outline-secondary">
+                Cancel
+                </a>
 
-</form>
+            </form>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 {% endblock %}

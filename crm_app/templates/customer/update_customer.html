@@ -4,29 +4,30 @@
 
 {% block content %}
 
-<div class="card">
+    <div class="card">
 
-<div class="card-body">
+        <div class="card-body">
 
-<h3>Update Customer</h3>
-<hr>
-<form method="POST">
+        <h3>Update Customer</h3>
+        <hr>
+            <form method="POST">
 
-{% csrf_token %}
+            {% csrf_token %}
 
-{{ form|crispy }}
+            {{ form|crispy }}
 
-<button class="btn btn-outline-success">
-Update
-</button>
-<a href="{% url 'customer-list' %}"
-class="btn btn-outline-secondary">
-Cancel
-</a>
-</form>
+                <button class="btn btn-outline-success">
+                Update
+                </button>
+                
+                <a href="{% url 'customer-list' %}"
+                class="btn btn-outline-secondary">
+                Cancel
+                </a>
+            </form>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 {% endblock %}

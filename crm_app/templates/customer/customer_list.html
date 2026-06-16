@@ -2,71 +2,69 @@
 
 {% block content %}
 
-<div class="d-flex justify-content-between mb-3">
+    <div class="d-flex justify-content-between mb-3">
 
-<h2>Customers</h2>
+        <h2>Customers</h2>
 
-{% if is_admin %}
-<a href="{% url 'add-customer' %}"
-class="btn btn-outline-primary">
-Add Customer
-</a>
-{% endif %}
+        {% if is_admin %}
+            <a href="{% url 'add-customer' %}"
+            class="btn btn-outline-primary">
+            Add Customer
+            </a>
+        {% endif %}
 
-</div>
+    </div>
 
-<table class="table table-hover bg-white">
+    <table class="table table-hover bg-white">
 
-<thead class="table-primary">
+        <thead class="table-primary">
 
-<tr>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Status</th>
+                <th>Phone</th>
+                <th>Status</th>
+                {% if is_admin %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
 
-<th>Name</th>
-<th>Email</th>
-<th>Company</th>
-<th>Status</th>
-<th>Phone</th>
-<th>Status</th>
-{% if is_admin %}
-<th>Actions</th>
-{% endif %}
-</tr>
+        </thead>
 
-</thead>
+        <tbody>
 
-<tbody>
+            {% for customer in customers %}
 
-{% for customer in customers %}
+                <tr>
+                    <td><a href="{% url 'customer-profile' customer.id %}">{{ customer.name }}</a></td>
+                    <td>{{customer.company}}</td>
+                    <td>{{customer.city}}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.status }}</td>
 
-<tr>
+                    {% if is_admin %}
+                        <td>
+                            <a href="{% url 'update-customer' customer.id %}"
+                            class="btn btn-outline-warning btn-sm">
+                            Edit
+                            </a>
 
-<td><a href="{% url 'customer-profile' customer.id %}">{{ customer.name }}</a></td>
-<td>{{customer.company}}</td>
-<td>{{customer.city}}</td>
-<td>{{ customer.email }}</td>
-<td>{{ customer.phone }}</td>
-<td>{{ customer.status }}</td>
+                            <a href="{% url 'delete-customer' customer.id %}"
+                            class="btn btn-outline-danger btn-sm">
+                            Delete
+                            </a>
+                        </td>
+                    {% endif %}
 
-{% if is_admin %}
-<td>
-<a href="{% url 'update-customer' customer.id %}"
-class="btn btn-outline-warning btn-sm">
-Edit
-</a>
+                </tr>
 
-<a href="{% url 'delete-customer' customer.id %}"
-class="btn btn-outline-danger btn-sm">
-Delete
-</a>
-</td>
-{% endif %}
+            {% endfor %}
 
-</tr>
+        </tbody>
 
-{% endfor %}
-
-</tbody>
-
-</table>
+    </table>
 
 {% endblock %}
