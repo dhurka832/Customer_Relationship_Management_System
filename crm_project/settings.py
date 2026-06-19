@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-pppz&z(99!m8@5yj093@zs6==a60_qd64j&d79+y)z-n&eq-l(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'customer-relationship-management-system-1wpw.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://customer-relationship-management-system-1wpw.onrender.com',
+]
 
 
 # Application definition
