@@ -1,70 +1,243 @@
 {% extends 'base.html' %}
 
+{% block page_title %}Customers{% endblock %}
+
 {% block content %}
 
-    <div class="d-flex justify-content-between mb-3">
-
-        <h2>Customers</h2>
-
+<div class="customer-list-container">
+    <!-- Page Header -->
+    <div class="flex-between mb-6">
+        <div>
+            <h1 class="text-3xl font-bold mb-1"><i class="bi bi-people"></i> Customers</h1>
+            <p class="text-muted">Manage and view all your customers</p>
+        </div>
         {% if is_admin %}
-            <a href="{% url 'add-customer' %}"
-            class="btn btn-outline-primary">
-            Add Customer
+            <a href="{% url 'add-customer' %}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Add Customer
             </a>
         {% endif %}
-
     </div>
 
-    <table class="table table-hover bg-white">
+    <!-- Search & Filter Section -->
+    <div class="card mb-6 hover-lift">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="searchCustomer" class="form-label">
+                            <i class="bi bi-search"></i> Search Customers
+                        </label>
+                        <input type="text" id="searchCustomer" class="form-control" placeholder="Search by name, email, or company...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="filterStatus" class="form-label">Status</label>
+                        <select id="filterStatus" class="form-control">
+                            <option value="">All Statuses</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button id="resetFilters" class="btn btn-secondary w-100">
+                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <thead class="table-primary">
-
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Company</th>
-                <th>Status</th>
-                <th>Phone</th>
-                <th>Status</th>
+    <!-- Customers Table -->
+    {% if customers %}
+        <div class="card hover-lift">
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">
+                                <i class="bi bi-person"></i> Name
+                            </th>
+                            <th style="width: 20%;">
+                                <i class="bi bi-envelope"></i> Email
+                            </th>
+                            <th style="width: 20%;">
+                                <i class="bi bi-building"></i> Company
+                            </th>
+                            <th style="width: 15%;">
+                                <i class="bi bi-pin"></i> City
+                            </th>
+                            <th style="width: 10%;">
+                                <i class="bi bi-info-circle"></i> Status
+                            </th>
+                            {% if is_admin %}
+                                <th style="width: 10%;">Actions</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        {% for customer in customers %}
+                            <tr class="customer-row" data-name="{{ customer.name }}" data-email="{{ customer.email }}" data-company="{{ customer.company }}" data-status="{{ customer.status }}">
+                                <td>
+                                    <div class="flex gap-3" style="align-items: center;">
+                                        <div class="avatar" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9rem;">
+                                            {{ customer.name|first }}
+                                        </div>
+                                        <a href="{% url 'customer-profile' customer.id %}" class="link font-semibold">
+                                            {{ customer.name }}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-muted text-small">
+                                        <i class="bi bi-envelope-open"></i> {{ customer.email }}
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ customer.company|default:"—" }}
+                                </td>
+                                <td>
+                                    {{ customer.city|default:"—" }}
+                                </td>
+                                <td>
+                                    {% if customer.status == "Active" %}
+                                        <span class="badge badge-success">
+                                            <i class="bi bi-circle-fill"></i> {{ customer.status }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge" style="background: rgba(107, 114, 128, 0.1); color: var(--gray-600);">
+                                            <i class="bi bi-circle-fill"></i> {{ customer.status }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                {% if is_admin %}
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="{% url 'update-customer' customer.id %}" class="btn btn-small btn-outline" title="Edit" style="border-color: var(--warning); color: var(--warning);">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a href="{% url 'delete-customer' customer.id %}" class="btn btn-small btn-outline" title="Delete" style="border-color: var(--danger); color: var(--danger);">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="card hover-lift" style="text-align: center;">
+            <div class="card-body py-8">
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--gray-300);">
+                    <i class="bi bi-inbox"></i>
+                </div>
+                <h4 class="text-muted mb-2">No Customers Found</h4>
+                <p class="text-muted mb-4">Start by creating your first customer to get started.</p>
                 {% if is_admin %}
-                <th>Actions</th>
+                    <a href="{% url 'add-customer' %}" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Create Customer
+                    </a>
                 {% endif %}
-            </tr>
+            </div>
+        </div>
+    {% endif %}
 
-        </thead>
+    <!-- Results Info -->
+    <div class="mt-4 text-muted text-small">
+        <i class="bi bi-info-circle"></i> Showing <strong id="resultCount">{{ customers|length }}</strong> customer(s)
+    </div>
+</div>
 
-        <tbody>
+<style>
+    .customer-list-container {
+        animation: fadeIn 0.4s ease-out;
+    }
 
-            {% for customer in customers %}
+    .customer-row {
+        transition: all var(--transition-fast);
+    }
 
-                <tr>
-                    <td><a href="{% url 'customer-profile' customer.id %}">{{ customer.name }}</a></td>
-                    <td>{{customer.company}}</td>
-                    <td>{{customer.city}}</td>
-                    <td>{{ customer.email }}</td>
-                    <td>{{ customer.phone }}</td>
-                    <td>{{ customer.status }}</td>
+    .customer-row:hover {
+        background-color: rgba(99, 102, 241, 0.02);
+        transform: scale(1.01);
+    }
 
-                    {% if is_admin %}
-                        <td>
-                            <a href="{% url 'update-customer' customer.id %}"
-                            class="btn btn-outline-warning btn-sm">
-                            Edit
-                            </a>
+    .text-3xl {
+        font-size: 1.875rem;
+    }
 
-                            <a href="{% url 'delete-customer' customer.id %}"
-                            class="btn btn-outline-danger btn-sm">
-                            Delete
-                            </a>
-                        </td>
-                    {% endif %}
+    .gap-3 {
+        gap: 0.75rem;
+    }
 
-                </tr>
+    .avatar {
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
 
-            {% endfor %}
+    .table-responsive {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        overflow: hidden;
+    }
 
-        </tbody>
+    #resultCount {
+        color: var(--primary);
+        font-weight: 700;
+    }
 
-    </table>
+    .py-8 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+</style>
+
+<script>
+    // Search and Filter Functionality
+    const searchInput = document.getElementById('searchCustomer');
+    const statusFilter = document.getElementById('filterStatus');
+    const resetBtn = document.getElementById('resetFilters');
+    const tableBody = document.getElementById('customerTableBody');
+    const resultCount = document.getElementById('resultCount');
+
+    function filterCustomers() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const statusTerm = statusFilter.value;
+        let visibleCount = 0;
+
+        const rows = tableBody.querySelectorAll('tr');
+        rows.forEach(row => {
+            const name = row.getAttribute('data-name').toLowerCase();
+            const email = row.getAttribute('data-email').toLowerCase();
+            const company = row.getAttribute('data-company').toLowerCase();
+            const status = row.getAttribute('data-status');
+
+            const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm) || company.includes(searchTerm);
+            const matchesStatus = !statusTerm || status === statusTerm;
+
+            if (matchesSearch && matchesStatus) {
+                row.style.display = '';
+                row.style.animation = 'slideInLeft 0.3s ease-out';
+                visibleCount++;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        resultCount.textContent = visibleCount;
+    }
+
+    searchInput.addEventListener('keyup', filterCustomers);
+    statusFilter.addEventListener('change', filterCustomers);
+
+    resetBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        statusFilter.value = '';
+        filterCustomers();
+    });
+</script>
 
 {% endblock %}

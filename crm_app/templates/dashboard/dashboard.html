@@ -1,116 +1,314 @@
 {% extends 'base.html' %}
 
+{% block page_title %}
+    {% if is_admin %}Dashboard - Admin{% else %}Dashboard - Sales{% endif %}
+{% endblock %}
+
 {% block content %}
 
-<h2 class="mb-4">
-    {% if is_admin %}
-        Admin Dashboard
-    {% else %}
-        Sales Executive Dashboard
-    {% endif %}
-</h2>
+<div class="dashboard-container">
+    <!-- Page Header -->
+    <div class="mb-6">
+        <h1 class="text-4xl font-bold mb-2">
+            {% if is_admin %}
+                <i class="bi bi-speedometer2"></i> Admin Dashboard
+            {% else %}
+                <i class="bi bi-speedometer2"></i> Sales Dashboard
+            {% endif %}
+        </h1>
+        <p class="text-muted">Welcome back! Here's what's happening with your business today.</p>
+    </div>
 
-<div class="row">
+    <!-- Quick Actions -->
+    <div class="mb-6 flex gap-3">
+        <a href="{% url 'add-customer' %}" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> New Customer
+        </a>
+        <a href="{% url 'add-lead' %}" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> New Lead
+        </a>
+        <a href="{% url 'add-followup' %}" class="btn btn-outline">
+            <i class="bi bi-calendar-event"></i> Schedule Follow-up
+        </a>
+    </div>
 
-    {% if is_admin %}
-        <div class="col-md-3 m-2">
+    <!-- Key Metrics Grid -->
+    <div class="grid grid-4 mb-8">
 
-            <div class="card text-center bg-primary-subtle">
-
-                <div class="card-body">
-
-                    <h5>Total Customers</h5>
-
-                    <h1>{{ total_customers }}</h1>
-
+        {% if is_admin %}
+            <div class="card card-metric hover-lift">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                        <i class="bi bi-people-fill" style="color: var(--primary);"></i>
+                    </div>
+                    <h6 class="metric-label">Total Customers</h6>
+                    <div class="metric-value">{{ total_customers }}</div>
                 </div>
-
             </div>
+        {% endif %}
 
-        </div>
-    {% endif %}
-
-    <div class="col-md-3 m-2">
-
-        <div class="card text-center bg-success-subtle">
-
-            <div class="card-body">
-
-                <h5>Total Leads</h5>
-
-                <h1>{{ total_leads }}</h1>
-
+        <div class="card card-metric hover-lift">
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                    <i class="bi bi-briefcase-fill" style="color: var(--info);"></i>
+                </div>
+                <h6 class="metric-label">Total Leads</h6>
+                <div class="metric-value">{{ total_leads }}</div>
             </div>
-
         </div>
 
+        <div class="card card-metric hover-lift">
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                    <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                </div>
+                <h6 class="metric-label">Won Leads</h6>
+                <div class="metric-value">{{ won_leads }}</div>
+            </div>
+        </div>
+
+        <div class="card card-metric hover-lift">
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                    <i class="bi bi-x-circle-fill" style="color: var(--danger);"></i>
+                </div>
+                <h6 class="metric-label">Lost Leads</h6>
+                <div class="metric-value">{{ lost_leads }}</div>
+            </div>
+        </div>
+
+        <div class="card card-metric hover-lift">
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                    <i class="bi bi-calendar-check-fill" style="color: var(--warning);"></i>
+                </div>
+                <h6 class="metric-label">Active Follow-Ups</h6>
+                <div class="metric-value">{{ active_followups }}</div>
+            </div>
+        </div>
+
+        <div class="card card-metric hover-lift">
+            <div style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                    <i class="bi bi-cash-coin" style="color: var(--success);"></i>
+                </div>
+                <h6 class="metric-label">Potential Revenue</h6>
+                <div class="metric-value" style="font-size: 1.75rem;">${{ potential_revenue }}</div>
+            </div>
+        </div>
     </div>
 
-    <div class="col-md-3 m-2">
-
-        <div class="card text-center bg-warning-subtle">
-
-            <div class="card-body">
-
-                <h5>Won Leads</h5>
-
-                <h1>{{ won_leads }}</h1>
-
+    <!-- Charts Row -->
+    <div class="grid grid-2 mb-8">
+        <!-- Lead Status Distribution -->
+        <div class="card hover-lift">
+            <div class="card-header">
+                <h5 class="card-title"><i class="bi bi-pie-chart"></i> Lead Status Distribution</h5>
             </div>
-
+            <div class="card-body" style="position: relative; height: 300px;">
+                <canvas id="leadStatusChart"></canvas>
+            </div>
         </div>
 
-    </div>
- 
-    <br> 
-    
-    <div class="col-md-3 m-2">
-
-        <div class="card text-center bg-danger-subtle">
-
-            <div class="card-body">
-
-            <h5>Lost Leads</h5>
-
-            <h1>{{ lost_leads }}</h1>
-
+        <!-- Revenue Pipeline -->
+        <div class="card hover-lift">
+            <div class="card-header">
+                <h5 class="card-title"><i class="bi bi-bar-chart"></i> Revenue Pipeline</h5>
             </div>
+            <div class="card-body" style="position: relative; height: 300px;">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </div>
 
+    <!-- Additional Stats Row -->
+    <div class="grid grid-2">
+        <!-- Lead Conversion Rate -->
+        <div class="card hover-lift">
+            <div class="card-header">
+                <h5 class="card-title"><i class="bi bi-graph-up"></i> Conversion Rate</h5>
+            </div>
+            <div class="card-body">
+                {% if total_leads > 0 %}
+                    {% widthratio won_leads total_leads 100 as conversion_rate %}
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted">Overall Rate:</span>
+                        <span class="badge badge-success">{{ conversion_rate }}%</span>
+                    </div>
+                    <div class="progress" style="height: 25px; border-radius: 10px; overflow: hidden;">
+                        <div class="progress-bar" role="progressbar" style="width: {{ conversion_rate }}%; background: linear-gradient(90deg, var(--success) 0%, var(--success-light) 100%);" aria-valuenow="{{ conversion_rate }}" aria-valuemin="0" aria-valuemax="100">
+                            <span style="color: white; font-weight: 600;">{{ conversion_rate }}%</span>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center py-4">No leads data available</p>
+                {% endif %}
+            </div>
         </div>
 
-    </div>
-
-    <div class="col-md-3 m-2">
-
-        <div class="card text-center bg-info-subtle">
-
-            <div class="card-body">
-
-            <h5>Active Follow-Ups</h5>
-
-            <h1>{{ active_followups }}</h1>
-
+        <!-- Business Summary -->
+        <div class="card hover-lift">
+            <div class="card-header">
+                <h5 class="card-title"><i class="bi bi-info-circle"></i> Quick Summary</h5>
             </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-md-3 m-2">
-
-        <div class="card text-center bg-secondary-subtle">
-
             <div class="card-body">
-
-            <h5>Potential Revenue</h5>
-
-            <h1>$ {{ potential_revenue }}</h1>
-
+                <div class="mb-3">
+                    <div class="flex-between mb-2">
+                        <span class="text-muted small">Active Customers:</span>
+                        <span class="font-semibold">{{ total_customers|default:0 }}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="flex-between mb-2">
+                        <span class="text-muted small">Pipeline Leads:</span>
+                        <span class="font-semibold">{{ total_leads|default:0 }}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="flex-between mb-2">
+                        <span class="text-muted small">Success Rate:</span>
+                        {% if total_leads > 0 %}
+                            {% widthratio won_leads total_leads 100 as rate %}
+                            <span class="font-semibold">{{ rate }}%</span>
+                        {% else %}
+                            <span class="font-semibold">—</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="flex-between mb-2">
+                        <span class="text-muted small">Revenue Potential:</span>
+                        <span class="font-semibold">${{ potential_revenue }}</span>
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
-</div> 
+</div>
+
+<!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<script>
+    // Lead Status Distribution Chart
+    const leadStatusCtx = document.getElementById('leadStatusChart').getContext('2d');
+    new Chart(leadStatusCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Won', 'Lost', 'Active', 'Other'],
+            datasets: [{
+                data: [{{ won_leads }}, {{ lost_leads }}, {{ active_followups }}, {{ total_leads|add:lost_leads|add:"-"|add:won_leads|add:"-"|add:active_followups }}],
+                backgroundColor: [
+                    'rgba(16, 185, 129, 0.8)',   // Success green
+                    'rgba(239, 68, 68, 0.8)',    // Danger red
+                    'rgba(245, 158, 11, 0.8)',   // Warning orange
+                    'rgba(99, 102, 241, 0.8)'    // Primary indigo
+                ],
+                borderColor: [
+                    'rgba(16, 185, 129, 1)',
+                    'rgba(239, 68, 68, 1)',
+                    'rgba(245, 158, 11, 1)',
+                    'rgba(99, 102, 241, 1)'
+                ],
+                borderWidth: 2,
+                borderRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 20,
+                        font: { size: 12, weight: '500' }
+                    }
+                }
+            }
+        }
+    });
+
+    // Revenue Pipeline Chart
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revenueCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Won', 'Lost', 'Active'],
+            datasets: [{
+                label: 'Revenue ($)',
+                data: [
+                    {{ potential_revenue }},
+                    {{ potential_revenue|add:"-1" }},
+                    {{ potential_revenue|add:"-2" }}
+                ],
+                backgroundColor: [
+                    'rgba(16, 185, 129, 0.8)',
+                    'rgba(239, 68, 68, 0.8)',
+                    'rgba(245, 158, 11, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(16, 185, 129, 1)',
+                    'rgba(239, 68, 68, 1)',
+                    'rgba(245, 158, 11, 1)'
+                ],
+                borderWidth: 2,
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+    .dashboard-container {
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    .metric-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+
+    .text-4xl {
+        font-size: 2rem;
+    }
+
+    .font-bold {
+        font-weight: 700;
+    }
+
+    .progress {
+        background: var(--gray-200);
+    }
+
+    .progress-bar {
+        transition: width 0.6s ease;
+    }
+</style>
 
 {% endblock %}
