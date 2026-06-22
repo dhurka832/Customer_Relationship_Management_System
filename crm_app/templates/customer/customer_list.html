@@ -208,26 +208,29 @@
         const statusTerm = statusFilter.value;
         let visibleCount = 0;
 
+        if (!tableBody) return;
+
         const rows = tableBody.querySelectorAll('tr');
         rows.forEach(row => {
-            const name = row.getAttribute('data-name').toLowerCase();
-            const email = row.getAttribute('data-email').toLowerCase();
-            const company = row.getAttribute('data-company').toLowerCase();
-            const status = row.getAttribute('data-status');
+            const name = row.getAttribute('data-name') || '';
+            const email = row.getAttribute('data-email') || '';
+            const company = row.getAttribute('data-company') || '';
+            const status = row.getAttribute('data-status') || '';
 
-            const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm) || company.includes(searchTerm);
-            const matchesStatus = !statusTerm || status === statusTerm;
+            const matchesSearch = searchTerm === '' || name.includes(searchTerm) || email.includes(searchTerm) || company.includes(searchTerm);
+            const matchesStatus = statusTerm === '' || status === statusTerm;
 
             if (matchesSearch && matchesStatus) {
                 row.style.display = '';
-                row.style.animation = 'slideInLeft 0.3s ease-out';
                 visibleCount++;
             } else {
                 row.style.display = 'none';
             }
         });
 
-        resultCount.textContent = visibleCount;
+        if (resultCount) {
+            resultCount.textContent = visibleCount;
+        }
     }
 
     searchInput.addEventListener('keyup', filterCustomers);

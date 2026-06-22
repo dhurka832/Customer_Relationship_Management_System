@@ -161,9 +161,9 @@ def logout_view(request):
 @login_required
 def lead_list(request):
     if request.user.is_superuser:
-        leads = Lead.objects.all().select_related('customer', 'assigned_to').order_by('-created_at')
+        leads = Lead.objects.all()
     else:
-        leads = Lead.objects.filter(assigned_to=request.user).select_related('customer', 'assigned_to').order_by('-created_at')
+        leads = Lead.objects.filter(customer=request.user)
     is_admin = request.user.is_superuser
     return render(request,"lead/lead_list.html",{'leads':leads,"is_admin":is_admin})
 

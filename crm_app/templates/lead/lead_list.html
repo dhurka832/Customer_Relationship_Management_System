@@ -86,9 +86,9 @@
                                 <td>
                                     <div class="flex gap-3" style="align-items: center;">
                                         <div class="avatar" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--info) 0%, var(--primary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9rem;">
-                                            {{ lead.customer|first|default:"L" }}
+                                            {{ lead.customer.name|first }}
                                         </div>
-                                        <span class="font-semibold">{{ lead.customer }}</span>
+                                        <span class="font-semibold">{{ lead.customer.name }}</span>
                                     </div>
                                 </td>
                                 <td>
@@ -238,25 +238,28 @@
         const statusTerm = statusFilter.value;
         let visibleCount = 0;
 
+        if (!tableBody) return;
+
         const rows = tableBody.querySelectorAll('tr');
         rows.forEach(row => {
-            const customer = row.getAttribute('data-customer').toLowerCase();
-            const status = row.getAttribute('data-status');
-            const assigned = row.getAttribute('data-assigned').toLowerCase();
+            const customer = row.getAttribute('data-customer') || '';
+            const status = row.getAttribute('data-status') || '';
+            const assigned = row.getAttribute('data-assigned') || '';
 
-            const matchesSearch = customer.includes(searchTerm) || assigned.includes(searchTerm);
-            const matchesStatus = !statusTerm || status === statusTerm;
+            const matchesSearch = searchTerm === '' || customer.includes(searchTerm) || assigned.includes(searchTerm);
+            const matchesStatus = statusTerm === '' || status === statusTerm;
 
             if (matchesSearch && matchesStatus) {
                 row.style.display = '';
-                row.style.animation = 'slideInLeft 0.3s ease-out';
                 visibleCount++;
             } else {
                 row.style.display = 'none';
             }
         });
 
-        resultCount.textContent = visibleCount;
+        if (resultCount) {
+            resultCount.textContent = visibleCount;
+        }
     }
 
     searchInput.addEventListener('keyup', filterLeads);
