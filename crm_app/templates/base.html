@@ -42,6 +42,10 @@
             transition: transform 0.3s ease;
         }
 
+        [data-theme="dark"] .sidebar {
+            background: linear-gradient(180deg, #0f172a 0%, #0a0e27 100%);
+        }
+
         .sidebar-brand {
             padding: 2rem 1.5rem;
             text-align: center;
@@ -155,11 +159,15 @@
         .top-bar {
             background: white;
             padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: var(--shadow-sm);
+        }
+
+        [data-theme="dark"] .top-bar {
+            background: var(--bg-primary);
         }
 
         .top-bar-title {
@@ -392,6 +400,11 @@
                     {% block page_title %}CRM System{% endblock %}
                 </div>
                 <div class="top-bar-actions">
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="btn btn-icon" title="Toggle Dark Mode" style="background: none; border: none; cursor: pointer; font-size: 1.25rem; color: var(--text-secondary); margin-right: 1rem;">
+                        <i class="bi bi-moon-fill"></i>
+                    </button>
+
                     <div class="top-bar-user">
                         <i class="bi bi-person-circle"></i>
                         <span>{{ user.username }}</span>
@@ -466,6 +479,38 @@
                 link.setAttribute('aria-current', 'page');
             }
         });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedMode = localStorage.getItem('darkMode');
+        const isDark = savedMode ? savedMode === 'true' : prefersDark;
+
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            if (darkModeToggle) {
+                darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+                darkModeToggle.title = 'Toggle Light Mode';
+            }
+        }
+
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('darkMode', newTheme === 'dark');
+
+                darkModeToggle.innerHTML = newTheme === 'dark'
+                    ? '<i class="bi bi-sun-fill"></i>'
+                    : '<i class="bi bi-moon-fill"></i>';
+
+                darkModeToggle.title = newTheme === 'dark'
+                    ? 'Toggle Light Mode'
+                    : 'Toggle Dark Mode';
+            });
+        }
     </script>
 </body>
 

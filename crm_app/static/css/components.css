@@ -5,8 +5,8 @@
 
 /* ===== CARDS ===== */
 .card {
-  background: white;
-  border: 1px solid var(--gray-200);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   padding: var(--spacing-6);
@@ -238,10 +238,10 @@
   width: 100%;
   padding: var(--spacing-3) var(--spacing-4);
   font-size: 0.95rem;
-  border: 1px solid var(--gray-300);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  background: white;
-  color: var(--gray-800);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   transition: all var(--transition-fast);
 }
 
@@ -329,7 +329,7 @@ select.form-control {
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg-primary);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   max-width: 500px;
@@ -383,22 +383,22 @@ select.form-control {
 .table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--bg-primary);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
 
 .table thead {
-  background: var(--gray-50);
-  border-bottom: 2px solid var(--gray-200);
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--border-color);
 }
 
 .table th {
   padding: var(--spacing-4);
   text-align: left;
   font-weight: 700;
-  color: var(--gray-800);
+  color: var(--text-primary);
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -406,8 +406,8 @@ select.form-control {
 
 .table td {
   padding: var(--spacing-4);
-  border-bottom: 1px solid var(--gray-200);
-  color: var(--gray-700);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
 }
 
 .table tbody tr {
@@ -415,7 +415,7 @@ select.form-control {
 }
 
 .table tbody tr:hover {
-  background-color: var(--gray-50);
+  background-color: var(--bg-secondary);
 }
 
 .table-actions {
