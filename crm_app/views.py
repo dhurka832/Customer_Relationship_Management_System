@@ -14,7 +14,7 @@ from rest_framework import filters
 
 @login_required
 def customer_list(request):
-    customers = Customer.objects.all()
+    customers = Customer.objects.all().order_by('-created_at')
     is_admin = request.user.is_superuser
     search_query = request.GET.get("search")
 
@@ -161,9 +161,9 @@ def logout_view(request):
 @login_required
 def lead_list(request):
     if request.user.is_superuser:
-        leads = Lead.objects.all()
+        leads = Lead.objects.all().select_related('customer', 'assigned_to').order_by('-created_at')
     else:
-        leads = Lead.objects.filter(assigned_to=request.user)
+        leads = Lead.objects.filter(assigned_to=request.user).select_related('customer', 'assigned_to').order_by('-created_at')
     is_admin = request.user.is_superuser
     return render(request,"lead/lead_list.html",{'leads':leads,"is_admin":is_admin})
 

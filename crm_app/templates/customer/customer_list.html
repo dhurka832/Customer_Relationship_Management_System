@@ -78,7 +78,7 @@
                     </thead>
                     <tbody id="customerTableBody">
                         {% for customer in customers %}
-                            <tr class="customer-row" data-name="{{ customer.name }}" data-email="{{ customer.email }}" data-company="{{ customer.company }}" data-status="{{ customer.status }}">
+                            <tr class="customer-row" data-name="{{ customer.name|lower }}" data-email="{{ customer.email|lower }}" data-company="{{ customer.company|lower }}" data-status="{{ customer.status }}">
                                 <td>
                                     <div class="flex gap-3" style="align-items: center;">
                                         <div class="avatar" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9rem;">
