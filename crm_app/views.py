@@ -163,7 +163,7 @@ def lead_list(request):
     if request.user.is_superuser:
         leads = Lead.objects.all()
     else:
-        leads = Lead.objects.filter(customer=request.user)
+        leads = Lead.objects.filter(assigned_to=request.user).order_by('created_at')
     is_admin = request.user.is_superuser
     return render(request,"lead/lead_list.html",{'leads':leads,"is_admin":is_admin})
 
