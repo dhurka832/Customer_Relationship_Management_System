@@ -9,7 +9,7 @@
     <div class="flex-between mb-6">
         <div>
             <h1 class="text-3xl font-bold mb-1"><i class="bi bi-briefcase"></i> Leads</h1>
-            <p class="text-muted">Track and manage all your sales leads</p>
+            <p class="text-grey">Track and manage all your sales leads</p>
         </div>
         {% if is_admin %}
             <a href="{% url 'add-lead' %}" class="btn btn-primary">
@@ -88,7 +88,7 @@
                                         <div class="avatar" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--info) 0%, var(--primary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9rem;">
                                             {{ lead.customer.name|first }}
                                         </div>
-                                        <span class="font-semibold">{{ lead.customer.name }}</span>
+                                        <span class="font-semibold text-muted">{{ lead.customer.name }}</span>
                                     </div>
                                 </td>
                                 <td>

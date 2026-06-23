@@ -5,3 +5,7 @@ djangorestframework-simplejwt
 django-filter
 django-crispy-forms
 crispy-bootstrap5
+python-decouple
+dj-database-url
+whitenoise
+gunicorn
