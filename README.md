@@ -1,8 +1,6 @@
 # CRM Management System
 
-> A modern, full-featured Customer Relationship Management (CRM) application built with Django and PostgreSQL. Manage customers, leads, and follow-ups efficiently with role-based access control and real-time dashboards.
-
-A complete CRM solution designed to help sales teams manage customer relationships, track leads through the sales pipeline, and monitor business performance from initial contact to successful conversion.
+A modern, full-featured Customer Relationship Management (CRM) application built with Django and PostgreSQL. Manage customers, leads, and follow-ups efficiently with role-based access control and real-time dashboards.
 
 ---
 
