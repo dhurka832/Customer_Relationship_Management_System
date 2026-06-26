@@ -2,30 +2,31 @@
 
 {% load crispy_forms_tags %}
 
+{% block title %}Add Follow-Up - CRM{% endblock %}
+
 {% block content %}
 
-    <div class="card">
+<div class="mb-4">
+    <h2><i class="bi bi-calendar-plus"></i> Add Follow-Up</h2>
+    <p class="text-muted">Schedule a new follow-up with a customer.</p>
+</div>
 
-        <div class="card-body">
-
-            <h3>Add Follow-Up</h3>
-            <hr>
-            <form method="POST">
-
+<div class="card" style="max-width: 700px;">
+    <div class="card-body">
+        <form method="POST">
             {% csrf_token %}
-
             {{ form|crispy }}
 
-                <button class="btn btn-outline-primary">
-                Save Follow-Up
+            <div class="flex gap-3 mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-calendar-check"></i> Save Follow-Up
                 </button>
-
-                <a class="btn btn-outline-success" href={% url 'customer-list' %}>Cancel</a>
-                
-            </form>
-
-        </div>
-
+                <a href="{% url 'customer-list' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
     </div>
+</div>
 
 {% endblock %}

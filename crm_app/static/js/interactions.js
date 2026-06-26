@@ -1,7 +1,3 @@
-/* ========================================
-   Interactive Features & UI Enhancements
-   ======================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
     initializeUI();
 });
@@ -14,7 +10,6 @@ function initializeUI() {
     initializeSmoothScroll();
 }
 
-/* ===== TOOLTIPS ===== */
 function initializeTooltips() {
     const tooltips = document.querySelectorAll('[data-tooltip]');
     tooltips.forEach(el => {
@@ -40,7 +35,6 @@ function hideTooltip() {
     tooltips.forEach(el => el.remove());
 }
 
-/* ===== FORM VALIDATION ===== */
 function initializeFormValidation() {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
@@ -51,7 +45,6 @@ function initializeFormValidation() {
             }
         });
 
-        // Real-time validation
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('blur', () => {
@@ -112,7 +105,6 @@ function showFormError(form, message) {
     }, 5000);
 }
 
-/* ===== CONFIRM DIALOGS ===== */
 function initializeConfirmDialogs() {
     const deleteLinks = document.querySelectorAll('a[href*="delete"]');
     deleteLinks.forEach(link => {
@@ -124,7 +116,6 @@ function initializeConfirmDialogs() {
     });
 }
 
-/* ===== LOADING STATES ===== */
 function initializeLoadingStates() {
     const buttons = document.querySelectorAll('button[type="submit"], a.btn-primary');
     buttons.forEach(btn => {
@@ -143,7 +134,6 @@ function initializeLoadingStates() {
     });
 }
 
-/* ===== SMOOTH SCROLL ===== */
 function initializeSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -159,7 +149,6 @@ function initializeSmoothScroll() {
     });
 }
 
-/* ===== NOTIFICATION SYSTEM ===== */
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.className = `alert alert-${type}`;
@@ -181,24 +170,20 @@ function showNotification(message, type = 'success') {
     }, 4000);
 }
 
-/* ===== COPY TO CLIPBOARD ===== */
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         showNotification('Copied to clipboard!', 'success');
     });
 }
 
-/* ===== KEYBOARD SHORTCUTS ===== */
 function initializeKeyboardShortcuts() {
     document.addEventListener('keydown', (e) => {
-        // Ctrl/Cmd + K for search focus
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             const searchInput = document.querySelector('input[placeholder*="Search"]');
             if (searchInput) searchInput.focus();
         }
 
-        // Escape to close modals
         if (e.key === 'Escape') {
             const modals = document.querySelectorAll('.modal.show');
             modals.forEach(modal => modal.classList.remove('show'));
@@ -206,7 +191,6 @@ function initializeKeyboardShortcuts() {
     });
 }
 
-/* ===== DARK MODE TOGGLE (Optional) ===== */
 function initializeDarkModeToggle() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     if (!darkModeToggle) return;
@@ -231,7 +215,6 @@ function initializeDarkModeToggle() {
     });
 }
 
-/* ===== TABLE SORTING ===== */
 function initializeTableSort() {
     const tables = document.querySelectorAll('table');
     tables.forEach(table => {
@@ -265,23 +248,19 @@ function sortTable(table, columnIndex) {
     table.setAttribute('data-sort-asc', isAscending ? 'false' : 'true');
 }
 
-/* ===== EXPORT DATA ===== */
 function exportTableToCSV(filename = 'export.csv') {
     const table = document.querySelector('table');
     let csv = [];
 
-    // Get headers
     const headers = Array.from(table.querySelectorAll('th')).map(h => h.textContent.trim());
     csv.push(headers.join(','));
 
-    // Get rows
     const rows = table.querySelectorAll('tbody tr');
     rows.forEach(row => {
         const cells = Array.from(row.querySelectorAll('td')).map(cell => `"${cell.textContent.trim()}"`);
         csv.push(cells.join(','));
     });
 
-    // Download
     const csvContent = 'data:text/csv;charset=utf-8,' + csv.join('\n');
     const link = document.createElement('a');
     link.setAttribute('href', encodeURI(csvContent));
@@ -289,7 +268,6 @@ function exportTableToCSV(filename = 'export.csv') {
     link.click();
 }
 
-/* ===== PAGINATION ===== */
 function initializePagination() {
     const paginationLinks = document.querySelectorAll('.pagination a');
     paginationLinks.forEach(link => {
@@ -302,11 +280,9 @@ function initializePagination() {
 }
 
 function loadPage(pageNum) {
-    // Add your page loading logic here
     console.log('Loading page:', pageNum);
 }
 
-/* ===== INIT ALL ===== */
 initializeKeyboardShortcuts();
 initializeDarkModeToggle();
 initializeTableSort();

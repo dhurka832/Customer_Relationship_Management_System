@@ -85,7 +85,7 @@
                             <tr class="lead-row" data-customer="{{ lead.customer.name|lower }}" data-status="{{ lead.status }}" data-assigned="{% if lead.assigned_to %}{{ lead.assigned_to.username|lower }}{% else %}unassigned{% endif %}">
                                 <td>
                                     <div class="flex gap-3" style="align-items: center;">
-                                        <div class="avatar" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--info) 0%, var(--primary) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.9rem;">
+                                        <div class="avatar">
                                             {{ lead.customer.name|first }}
                                         </div>
                                         <span class="font-semibold text-muted">{{ lead.customer.name }}</span>
@@ -144,10 +144,10 @@
                                 {% if is_admin %}
                                     <td>
                                         <div class="table-actions">
-                                            <a href="{% url 'update-lead' lead.id %}" class="btn btn-small btn-outline" title="Edit" style="border-color: var(--warning); color: var(--warning);">
+                                            <a href="{% url 'update-lead' lead.id %}" class="btn btn-small btn-outline-warning" title="Edit">
                                                 <i class="bi bi-pencil"></i>
                                             </a>
-                                            <a href="{% url 'delete-lead' lead.id %}" class="btn btn-small btn-outline" title="Delete" style="border-color: var(--danger); color: var(--danger);">
+                                            <a href="{% url 'delete-lead' lead.id %}" class="btn btn-small btn-outline-danger" title="Delete">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </div>
@@ -182,48 +182,7 @@
     </div>
 </div>
 
-<style>
-    .leads-list-container {
-        animation: fadeIn 0.4s ease-out;
-    }
-
-    .lead-row {
-        transition: all var(--transition-fast);
-    }
-
-    .lead-row:hover {
-        background-color: rgba(99, 102, 241, 0.02);
-        transform: scale(1.01);
-    }
-
-    .text-3xl {
-        font-size: 1.875rem;
-    }
-
-    .gap-3 {
-        gap: 0.75rem;
-    }
-
-    .avatar {
-        font-size: 0.9rem;
-        flex-shrink: 0;
-    }
-
-    .table-responsive {
-        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        overflow: hidden;
-    }
-
-    #resultCount {
-        color: var(--primary);
-        font-weight: 700;
-    }
-
-    .py-8 {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
-</style>
+<!-- Styles moved to static/css/style.css -->
 
 <script>
     // Search and Filter Functionality

@@ -1,144 +1,180 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ customer.name }} - Customer Profile{% endblock %}
+
 {% block content %}
 
-    <div class="row">
-
-        <div class="col-md-4">
-
-            <div class="card">
-
-                <div class="card-body">
-
-                    <h3>{{ customer.name }}</h3>
-
-                    <hr>
-
-                    <p>
-                    <b>Email:</b>
-                    {{ customer.email }}
-                    </p>
-
-                    <p>
-                    <b>Phone:</b>
-                    {{ customer.phone }}
-                    </p>
-
-                    <p>
-                    <b>Company:</b>
-                    {{ customer.company }}
-                    </p>
-
-                    <p>
-                    <b>City:</b>
-                    {{ customer.city }}
-                    </p>
-
-                    <p>
-                    <b>Status:</b>
-                    {{ customer.status }}
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-8">
-
-            <div class="card">
-
-                <div class="card-body">
-
-                    <h4>
-                    Lead History
-                    </h4>
-
-                    <table class="table">
-
-                        <tr>
-
-                        <th>Status</th>
-                        <th>Value</th>
-
-                        </tr>
-
-                        {% for lead in leads %}
-
-                        <tr>
-
-                            <td>{{ lead.status }}</td>
-
-                            <td>₹{{ lead.expected_value }}</td>
-
-                        </tr>
-
-                        {% endfor %}
-
-                    </table>
-
-                </div>
-
-            </div>
-
-            <br>
-
-            <div class="card">
-
-                <div class="card-body">
-
-                    <h4>
-                    Follow-Ups
-                    </h4>
-
-                    <table class="table">
-
-                        <tr>
-
-                        <th>Date</th>
-                        <th>Notes</th>
-                        <th>Status</th>
-
-                        </tr>
-
-                        {% for followup in followups %}
-
-                            <tr>
-
-                                <td>{{ followup.Followup_date }}</td>
-
-                                <td>{{ followup.notes }}</td>
-
-                                <td>
-
-                                    {% if followup.completed %}
-
-                                    <span class="badge bg-success">
-                                    Completed
-                                    </span>
-
-                                    {% else %}
-
-                                    <span class="badge bg-warning">
-                                    Pending
-                                    </span>
-
-                                    {% endif %}
-
-                                </td>
-                            </tr>
-
-                        {% endfor %}
-
-                    </table>
-
-                </div>
-
-            </div>
-
-        </div>
-
+<!-- Page Header -->
+<div class="flex-between mb-6">
+    <div>
+        <h2><i class="bi bi-person-badge"></i> Customer Profile</h2>
+        <p class="text-muted">Viewing details for {{ customer.name }}</p>
     </div>
+    <a href="{% url 'customer-list' %}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Back to Customers
+    </a>
+</div>
+
+<div class="grid grid-2">
+
+    <!-- Customer Info Card -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">
+                <i class="bi bi-person-circle"></i> Customer Details
+            </h5>
+        </div>
+        <div class="card-body">
+
+            <!-- Avatar + Name -->
+            <div class="flex gap-3 mb-4" style="align-items: center;">
+                <div class="avatar" style="width: 54px; height: 54px; font-size: 1.4rem;">
+                    {{ customer.name|first }}
+                </div>
+                <div>
+                    <div class="font-bold" style="font-size: 1.2rem; color: var(--text-primary);">
+                        {{ customer.name }}
+                    </div>
+                    {% if customer.status == "Active" %}
+                        <span class="badge badge-success">
+                            <i class="bi bi-circle-fill" style="font-size: 0.5rem;"></i> Active
+                        </span>
+                    {% else %}
+                        <span class="badge badge-danger">
+                            <i class="bi bi-circle-fill" style="font-size: 0.5rem;"></i> {{ customer.status }}
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <hr style="border-color: var(--border-color);">
+
+            <!-- Details List -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+
+                <div class="flex gap-3" style="align-items: center;">
+                    <i class="bi bi-envelope" style="color: var(--primary); min-width: 1.2rem;"></i>
+                    <div>
+                        <div class="text-xs text-muted">Email</div>
+                        <div class="font-semibold">{{ customer.email }}</div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3" style="align-items: center;">
+                    <i class="bi bi-telephone" style="color: var(--primary); min-width: 1.2rem;"></i>
+                    <div>
+                        <div class="text-xs text-muted">Phone</div>
+                        <div class="font-semibold">{{ customer.phone|default:"—" }}</div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3" style="align-items: center;">
+                    <i class="bi bi-building" style="color: var(--primary); min-width: 1.2rem;"></i>
+                    <div>
+                        <div class="text-xs text-muted">Company</div>
+                        <div class="font-semibold">{{ customer.company|default:"—" }}</div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3" style="align-items: center;">
+                    <i class="bi bi-geo-alt" style="color: var(--primary); min-width: 1.2rem;"></i>
+                    <div>
+                        <div class="text-xs text-muted">City</div>
+                        <div class="font-semibold">{{ customer.city|default:"—" }}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Right column: Lead History + Follow-Ups -->
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- Lead History Card -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <i class="bi bi-briefcase"></i> Lead History
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if leads %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Expected Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for lead in leads %}
+                                    <tr>
+                                        <td>
+                                            {% if lead.status == "Won" %}
+                                                <span class="badge badge-success">{{ lead.status }}</span>
+                                            {% elif lead.status == "Lost" %}
+                                                <span class="badge badge-danger">{{ lead.status }}</span>
+                                            {% else %}
+                                                <span class="badge badge-primary">{{ lead.status }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="font-semibold">₹{{ lead.expected_value }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center py-4">No lead history found.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Follow-Ups Card -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <i class="bi bi-calendar-event"></i> Follow-Ups
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if followups %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Notes</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for followup in followups %}
+                                    <tr>
+                                        <td>{{ followup.Followup_date }}</td>
+                                        <td>{{ followup.notes }}</td>
+                                        <td>
+                                            {% if followup.completed %}
+                                                <span class="badge badge-success">Completed</span>
+                                            {% else %}
+                                                <span class="badge badge-warning">Pending</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center py-4">No follow-ups found.</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div><!-- end right column -->
+
+</div><!-- end grid -->
 
 {% endblock %}
