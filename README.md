@@ -66,8 +66,6 @@ A modern, full-featured Customer Relationship Management (CRM) application built
 
 ## 📸 Screenshots
 
-*(Replace with actual screenshot paths if available in your `screenshots/` folder)*
-
 <p align="center">
   <img src="screenshots/admin-dashboard.jpg" alt="Admin Dashboard View" width="400"/>
   <img src="screenshots/customers-list.jpg" alt="Customers List View" width="400"/>
