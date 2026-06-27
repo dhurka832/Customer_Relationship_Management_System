@@ -72,8 +72,8 @@ A modern, full-featured Customer Relationship Management (CRM) application built
   <img src="screenshots/leads-list.jpg" alt="Leads List View" width="400"/>
   <img src="screenshots/sales-dashboard.jpg" alt="Sales Dashboard View" width="400"/>
   <img src="screenshots/sales-leads.jpg" alt="Customers List View" width="400"/>
-  <img src="screenshots/register.jpg" alt="Customers List View" width="400"/>
-  <img src="screenshots/login.jpg" alt="Customers List View" width="400"/>
+  <img src="screenshots/register.jpg" alt="Register View" width="400"/>
+  <img src="screenshots/login.jpg" alt="Login View" width="400"/>
 </p>
 
 ---
