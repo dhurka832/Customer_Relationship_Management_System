@@ -5,7 +5,6 @@
 {% block content %}
 
 <div class="customer-list-container">
-    <!-- Page Header -->
     <div class="flex-between mb-6">
         <div>
             <h1 class="text-3xl font-bold mb-1"><i class="bi bi-people"></i> Customers</h1>
@@ -18,38 +17,39 @@
         {% endif %}
     </div>
 
-    <!-- Search & Filter Section -->
     <div class="card mb-6 hover-lift">
         <div class="card-body">
-            <div class="row g-3">
+            <form method="GET" action="{% url 'customer-list' %}" class="row g-3">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="searchCustomer" class="form-label">
                             <i class="bi bi-search"></i> Search Customers
                         </label>
-                        <input type="text" id="searchCustomer" class="form-control" placeholder="Search by name, email, or company...">
+                        <input type="text" name="search" id="searchCustomer" class="form-control" placeholder="Search by name, email, or company..." value="{{ search_query|default:'' }}">
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="filterStatus" class="form-label">Status</label>
-                        <select id="filterStatus" class="form-control">
+                        <select name="status" id="filterStatus" class="form-control">
                             <option value="">All Statuses</option>
-                            <option value="Active">Active</option>
-                            <option value="Inactive">Inactive</option>
+                            <option value="Active" {% if status_query == 'Active' %}selected{% endif %}>Active</option>
+                            <option value="Inactive" {% if status_query == 'Inactive' %}selected{% endif %}>Inactive</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3 d-flex align-items-end">
-                    <button id="resetFilters" class="btn btn-secondary w-100">
-                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                <div class="col-md-3 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary w-50">
+                        <i class="bi bi-filter"></i> Filter
                     </button>
+                    <a href="{% url 'customer-list' %}" class="btn btn-secondary w-50" style="text-align: center; justify-content: center; display: flex; align-items: center;">
+                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                    </a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
-    <!-- Customers Table -->
     {% if customers %}
         <div class="card hover-lift">
             <div class="table-responsive">
@@ -150,60 +150,9 @@
         </div>
     {% endif %}
 
-    <!-- Results Info -->
     <div class="mt-4 text-muted text-small">
         <i class="bi bi-info-circle"></i> Showing <strong id="resultCount">{{ customers|length }}</strong> customer(s)
     </div>
 </div>
-
-<!-- Styles moved to static/css/style.css -->
-
-<script>
-    // Search and Filter Functionality
-    const searchInput = document.getElementById('searchCustomer');
-    const statusFilter = document.getElementById('filterStatus');
-    const resetBtn = document.getElementById('resetFilters');
-    const tableBody = document.getElementById('customerTableBody');
-    const resultCount = document.getElementById('resultCount');
-
-    function filterCustomers() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const statusTerm = statusFilter.value;
-        let visibleCount = 0;
-
-        if (!tableBody) return;
-
-        const rows = tableBody.querySelectorAll('tr');
-        rows.forEach(row => {
-            const name = row.getAttribute('data-name') || '';
-            const email = row.getAttribute('data-email') || '';
-            const company = row.getAttribute('data-company') || '';
-            const status = row.getAttribute('data-status') || '';
-
-            const matchesSearch = searchTerm === '' || name.includes(searchTerm) || email.includes(searchTerm) || company.includes(searchTerm);
-            const matchesStatus = statusTerm === '' || status === statusTerm;
-
-            if (matchesSearch && matchesStatus) {
-                row.style.display = '';
-                visibleCount++;
-            } else {
-                row.style.display = 'none';
-            }
-        });
-
-        if (resultCount) {
-            resultCount.textContent = visibleCount;
-        }
-    }
-
-    searchInput.addEventListener('keyup', filterCustomers);
-    statusFilter.addEventListener('change', filterCustomers);
-
-    resetBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        statusFilter.value = '';
-        filterCustomers();
-    });
-</script>
 
 {% endblock %}

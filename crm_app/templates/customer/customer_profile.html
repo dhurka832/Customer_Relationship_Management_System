@@ -4,7 +4,6 @@
 
 {% block content %}
 
-<!-- Page Header -->
 <div class="flex-between mb-6">
     <div>
         <h2><i class="bi bi-person-badge"></i> Customer Profile</h2>
@@ -17,7 +16,6 @@
 
 <div class="grid grid-2">
 
-    <!-- Customer Info Card -->
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
@@ -26,7 +24,6 @@
         </div>
         <div class="card-body">
 
-            <!-- Avatar + Name -->
             <div class="flex gap-3 mb-4" style="align-items: center;">
                 <div class="avatar" style="width: 54px; height: 54px; font-size: 1.4rem;">
                     {{ customer.name|first }}
@@ -49,7 +46,6 @@
 
             <hr style="border-color: var(--border-color);">
 
-            <!-- Details List -->
             <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
 
                 <div class="flex gap-3" style="align-items: center;">
@@ -88,10 +84,7 @@
         </div>
     </div>
 
-    <!-- Right column: Lead History + Follow-Ups -->
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-
-        <!-- Lead History Card -->
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
@@ -132,7 +125,6 @@
             </div>
         </div>
 
-        <!-- Follow-Ups Card -->
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
@@ -173,8 +165,8 @@
             </div>
         </div>
 
-    </div><!-- end right column -->
+    </div>
 
-</div><!-- end grid -->
+</div>
 
 {% endblock %}

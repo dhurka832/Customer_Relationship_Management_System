@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="dashboard-container">
-    <!-- Page Header -->
+    
     <div class="mb-6">
         <h1 class="text-4xl font-bold mb-2">
             {% if is_admin %}
@@ -19,7 +19,6 @@
         <p class="text-grey">Welcome back! Here's what's happening with your business today.</p>
     </div>
 
-    <!-- Quick Actions -->
     <div class="mb-6 flex gap-3">
         <a href="{% url 'add-customer' %}" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> New Customer
@@ -32,7 +31,6 @@
         </a>
     </div>
 
-    <!-- Key Metrics Grid -->
     <div class="grid grid-4 mb-8">
 
         {% if is_admin %}
@@ -98,32 +96,8 @@
         </div>
     </div>
     <br>
-    <!-- Charts Row -->
-    <div class="grid grid-2 mb-8">
-        <!-- Lead Status Distribution -->
-        <div class="card hover-lift">
-            <div class="card-header">
-                <h5 class="card-title"><i class="bi bi-pie-chart"></i> Lead Status Distribution</h5>
-            </div>
-            <div class="card-body" style="position: relative; height: 300px;">
-                <canvas id="leadStatusChart"></canvas>
-            </div>
-        </div>
 
-        <!-- Revenue Pipeline -->
-        <div class="card hover-lift">
-            <div class="card-header">
-                <h5 class="card-title"><i class="bi bi-bar-chart"></i> Revenue Pipeline</h5>
-            </div>
-            <div class="card-body" style="position: relative; height: 300px;">
-                <canvas id="revenueChart"></canvas>
-            </div>
-        </div>
-    </div>
-    <br>
-    <!-- Additional Stats Row -->
     <div class="grid grid-2">
-        <!-- Lead Conversion Rate -->
         <div class="card hover-lift">
             <div class="card-header">
                 <h5 class="card-title"><i class="bi bi-graph-up"></i> Conversion Rate</h5>
@@ -146,7 +120,6 @@
             </div>
         </div>
 
-        <!-- Business Summary -->
         <div class="card hover-lift">
             <div class="card-header">
                 <h5 class="card-title"><i class="bi bi-info-circle"></i> Quick Summary</h5>
@@ -185,104 +158,5 @@
         </div>
     </div>
 </div>
-
-<!-- Chart.js Library -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
-<script>
-    // Lead Status Distribution Chart
-    const leadStatusCtx = document.getElementById('leadStatusChart').getContext('2d');
-    new Chart(leadStatusCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Won', 'Lost', 'Active', 'Other'],
-            datasets: [{
-                data: [{{ won_leads }}, {{ lost_leads }}, {{ active_followups }}, {{ total_leads|add:lost_leads|add:"-"|add:won_leads|add:"-"|add:active_followups }}],
-                backgroundColor: [
-                    'rgba(16, 185, 129, 0.8)',   // Success green
-                    'rgba(239, 68, 68, 0.8)',    // Danger red
-                    'rgba(245, 158, 11, 0.8)',   // Warning orange
-                    'rgba(99, 102, 241, 0.8)'    // Primary indigo
-                ],
-                borderColor: [
-                    'rgba(16, 185, 129, 1)',
-                    'rgba(239, 68, 68, 1)',
-                    'rgba(245, 158, 11, 1)',
-                    'rgba(99, 102, 241, 1)'
-                ],
-                borderWidth: 2,
-                borderRadius: 5
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        usePointStyle: true,
-                        padding: 20,
-                        font: { size: 12, weight: '500' }
-                    }
-                }
-            }
-        }
-    });
-
-    // Revenue Pipeline Chart
-    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-    new Chart(revenueCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Won', 'Lost', 'Active'],
-            datasets: [{
-                label: 'Revenue ($)',
-                data: [
-                    {{ potential_revenue }},
-                    {{ potential_revenue|add:"-1" }},
-                    {{ potential_revenue|add:"-2" }}
-                ],
-                backgroundColor: [
-                    'rgba(16, 185, 129, 0.8)',
-                    'rgba(239, 68, 68, 0.8)',
-                    'rgba(245, 158, 11, 0.8)'
-                ],
-                borderColor: [
-                    'rgba(16, 185, 129, 1)',
-                    'rgba(239, 68, 68, 1)',
-                    'rgba(245, 158, 11, 1)'
-                ],
-                borderWidth: 2,
-                borderRadius: 8
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: 'y',
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.05)'
-                    }
-                },
-                y: {
-                    grid: {
-                        display: false
-                    }
-                }
-            }
-        }
-    });
-</script>
-
-<!-- Styles moved to static/css/style.css -->
 
 {% endblock %}

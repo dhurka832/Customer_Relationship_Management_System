@@ -17,13 +17,22 @@ def customer_list(request):
     customers = Customer.objects.all().order_by('-created_at')
     is_admin = request.user.is_superuser
     search_query = request.GET.get("search")
+    status_query = request.GET.get("status")
 
     if search_query:
         customers = customers.filter(
-            Q(name__icontains=search_query) | Q (email__icontains=search_query) | Q(phone__icontains=search_query)
+            Q(name__icontains=search_query) | Q(email__icontains=search_query) | Q(phone__icontains=search_query)
         )
 
-    return render(request,"customer/customer_list.html",{"customers":customers,"is_admin":is_admin})
+    if status_query:
+        customers = customers.filter(status=status_query)
+
+    return render(request, "customer/customer_list.html", {
+        "customers": customers, 
+        "is_admin": is_admin,
+        "search_query": search_query,
+        "status_query": status_query
+    })
 
 @login_required
 def add_customer(request):
@@ -133,7 +142,21 @@ def register_view(request):
             return redirect('register')
 
         if password != password2:
-            messages.error(request,"Password do not match")
+            messages.error(request,"Passwords do not match")
+            return redirect('register')
+            
+        import re
+        if len(password) < 6:
+            messages.error(request, "Password must be at least 6 characters long")
+            return redirect('register')
+        if not re.search(r'[A-Z]', password):
+            messages.error(request, "Password must contain at least one uppercase letter")
+            return redirect('register')
+        if not re.search(r'[0-9]', password):
+            messages.error(request, "Password must contain at least one number")
+            return redirect('register')
+        if not re.search(r'[!@#$%^&*]', password):
+            messages.error(request, "Password must contain at least one special character (!@#$%^&*)")
             return redirect('register')
 
         User.objects.create_user(username=username,password=password)
@@ -161,11 +184,29 @@ def logout_view(request):
 @login_required
 def lead_list(request):
     if request.user.is_superuser:
-        leads = Lead.objects.all()
+        leads = Lead.objects.all().order_by('-created_at')
     else:
-        leads = Lead.objects.filter(assigned_to=request.user).order_by('created_at')
+        leads = Lead.objects.filter(assigned_to=request.user).order_by('-created_at')
+        
     is_admin = request.user.is_superuser
-    return render(request,"lead/lead_list.html",{'leads':leads,"is_admin":is_admin})
+    
+    search_query = request.GET.get("search")
+    status_query = request.GET.get("status")
+
+    if search_query:
+        leads = leads.filter(
+            Q(customer__name__icontains=search_query) | Q(assigned_to__username__icontains=search_query)
+        )
+        
+    if status_query:
+        leads = leads.filter(status=status_query)
+
+    return render(request, "lead/lead_list.html", {
+        'leads': leads, 
+        "is_admin": is_admin,
+        "search_query": search_query,
+        "status_query": status_query
+    })
 
 @login_required
 def add_lead(request):

@@ -43,13 +43,6 @@ A modern, full-featured Customer Relationship Management (CRM) application built
   - Active follow-ups tracking
   - Potential revenue calculation
 
-### 🌙 Modern UI/UX
-- Responsive design for desktop and mobile
-- Dark mode support for comfortable viewing
-- Bootstrap 5 framework for modern styling
-- Beautiful, intuitive interface
-- Fast, user-friendly navigation
-
 ### 🔌 REST API
 - Full RESTful API endpoints with authentication
 - Customer and lead API resources
@@ -65,10 +58,85 @@ A modern, full-featured Customer Relationship Management (CRM) application built
 | **Backend** | Python, Django 4.x |
 | **Database** | PostgreSQL |
 | **API** | Django REST Framework |
-| **Authentication** | JWT (djangorestframework-simplejwt) |
-| **Frontend** | HTML, CSS, Bootstrap 5 |
-| **Forms** | Django Crispy Forms + Bootstrap 5 |
-| **Filtering** | Django Filter |
+| **Authentication** | Django Sessions & JWT API Auth |
+| **Frontend** | Pure HTML, CSS, Bootstrap 5 |
+| **Filtering** | Standard HTML GET Forms & Django ORM |
+
+---
+
+## 📸 Screenshots
+
+*(Replace with actual screenshot paths if available in your `screenshots/` folder)*
+
+<p align="center">
+  <img src="screenshots/admin-dashboard.jpg" alt="Admin Dashboard View" width="400"/>
+  <img src="screenshots/customers-list.jpg" alt="Customers List View" width="400"/>
+  <img src="screenshots/leads-list.jpg" alt="Leads List View" width="400"/>
+  <img src="screenshots/sales-dashboard.jpg" alt="Sales Dashboard View" width="400"/>
+  <img src="screenshots/sales-leads.jpg" alt="Customers List View" width="400"/>
+  <img src="screenshots/register.jpg" alt="Customers List View" width="400"/>
+  <img src="screenshots/login.jpg" alt="Customers List View" width="400"/>
+</p>
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Python** 3.8 or higher
+- **PostgreSQL** installed and running
+- **Git**
+
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/crm_project.git
+   cd crm_project
+   ```
+
+2. **Create and activate a virtual environment**
+   ```bash
+   python -m venv venv
+   # On Windows
+   venv\Scripts\activate
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up Environment Variables**
+   This project uses `python-decouple` for managing environment variables. Create a `.env` file in the root directory (next to `manage.py`) and add your database and security credentials:
+   ```env
+   SECRET_KEY=your_django_secret_key_here
+   DEBUG=True
+   DB_NAME=your_database_name
+   DB_USER=your_database_user
+   DB_PASSWORD=your_database_password
+   DB_HOST=localhost
+   DB_PORT=5432
+   ```
+
+5. **Apply Database Migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+6. **Create a Superuser (Admin Account)**
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+7. **Run the Development Server**
+   ```bash
+   python manage.py runserver
+   ```
+   The application will be available at `http://127.0.0.1:8000/`.
 
 ---
 

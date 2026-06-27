@@ -5,7 +5,6 @@
 {% block content %}
 
 <div class="leads-list-container">
-    <!-- Page Header -->
     <div class="flex-between mb-6">
         <div>
             <h1 class="text-3xl font-bold mb-1"><i class="bi bi-briefcase"></i> Leads</h1>
@@ -18,42 +17,43 @@
         {% endif %}
     </div>
 
-    <!-- Search & Filter Section -->
     <div class="card mb-6 hover-lift">
         <div class="card-body">
-            <div class="row g-3">
+            <form method="GET" action="{% url 'lead-list' %}" class="row g-3">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="searchLead" class="form-label">
                             <i class="bi bi-search"></i> Search Leads
                         </label>
-                        <input type="text" id="searchLead" class="form-control" placeholder="Search by customer or assigned user...">
+                        <input type="text" name="search" id="searchLead" class="form-control" placeholder="Search by customer or assigned user..." value="{{ search_query|default:'' }}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="filterStatus" class="form-label">Status</label>
-                        <select id="filterStatus" class="form-control">
+                        <select name="status" id="filterStatus" class="form-control">
                             <option value="">All Statuses</option>
-                            <option value="New">New</option>
-                            <option value="Contacted">Contacted</option>
-                            <option value="Qualified">Qualified</option>
-                            <option value="Proposal">Proposal</option>
-                            <option value="Won">Won</option>
-                            <option value="Lost">Lost</option>
+                            <option value="New" {% if status_query == 'New' %}selected{% endif %}>New</option>
+                            <option value="Contacted" {% if status_query == 'Contacted' %}selected{% endif %}>Contacted</option>
+                            <option value="Qualified" {% if status_query == 'Qualified' %}selected{% endif %}>Qualified</option>
+                            <option value="Proposal" {% if status_query == 'Proposal' %}selected{% endif %}>Proposal</option>
+                            <option value="Won" {% if status_query == 'Won' %}selected{% endif %}>Won</option>
+                            <option value="Lost" {% if status_query == 'Lost' %}selected{% endif %}>Lost</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex align-items-end">
-                    <button id="resetFilters" class="btn btn-secondary w-100">
-                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                <div class="col-md-4 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary w-50">
+                        <i class="bi bi-filter"></i> Filter
                     </button>
+                    <a href="{% url 'lead-list' %}" class="btn btn-secondary w-50" style="text-align: center; justify-content: center; display: flex; align-items: center;">
+                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                    </a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
-    <!-- Leads Table -->
     {% if leads %}
         <div class="card hover-lift">
             <div class="table-responsive">
@@ -176,59 +176,9 @@
         </div>
     {% endif %}
 
-    <!-- Results Info -->
     <div class="mt-4 text-muted text-small">
         <i class="bi bi-info-circle"></i> Showing <strong id="resultCount">{{ leads|length }}</strong> lead(s)
     </div>
 </div>
-
-<!-- Styles moved to static/css/style.css -->
-
-<script>
-    // Search and Filter Functionality
-    const searchInput = document.getElementById('searchLead');
-    const statusFilter = document.getElementById('filterStatus');
-    const resetBtn = document.getElementById('resetFilters');
-    const tableBody = document.getElementById('leadTableBody');
-    const resultCount = document.getElementById('resultCount');
-
-    function filterLeads() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const statusTerm = statusFilter.value;
-        let visibleCount = 0;
-
-        if (!tableBody) return;
-
-        const rows = tableBody.querySelectorAll('tr');
-        rows.forEach(row => {
-            const customer = row.getAttribute('data-customer') || '';
-            const status = row.getAttribute('data-status') || '';
-            const assigned = row.getAttribute('data-assigned') || '';
-
-            const matchesSearch = searchTerm === '' || customer.includes(searchTerm) || assigned.includes(searchTerm);
-            const matchesStatus = statusTerm === '' || status === statusTerm;
-
-            if (matchesSearch && matchesStatus) {
-                row.style.display = '';
-                visibleCount++;
-            } else {
-                row.style.display = 'none';
-            }
-        });
-
-        if (resultCount) {
-            resultCount.textContent = visibleCount;
-        }
-    }
-
-    searchInput.addEventListener('keyup', filterLeads);
-    statusFilter.addEventListener('change', filterLeads);
-
-    resetBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        statusFilter.value = '';
-        filterLeads();
-    });
-</script>
 
 {% endblock %}
