@@ -1,15 +1,13 @@
 :root {
-  /* Brand Colors */
-  --primary:       #6366f1;   /* indigo */
+  --primary:       #6366f1;   
   --primary-dark:  #4f46e5;
   --primary-light: #818cf8;
-  --secondary:     #8b5cf6;   /* purple */
-  --success:       #10b981;   /* green */
-  --danger:        #ef4444;   /* red */
-  --warning:       #f59e0b;   /* amber */
-  --info:          #3b82f6;   /* blue */
+  --secondary:     #8b5cf6;   
+  --success:       #10b981;   
+  --danger:        #ef4444;   
+  --warning:       #f59e0b;   
+  --info:          #3b82f6;   
 
-  /* Neutral Grays */
   --gray-900: #111827;
   --gray-800: #1f2937;
   --gray-700: #374151;
@@ -21,29 +19,24 @@
   --gray-100: #f3f4f6;
   --gray-50:  #f9fafb;
 
-  /* Background & Text (Light Mode) */
   --bg-primary:    #ffffff;
   --bg-secondary:  #f3f4f6;
   --text-primary:  #111827;
   --text-secondary:#6b7280;
   --border-color:  #e5e7eb;
 
-  /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
   --shadow-lg: 0 10px 24px rgba(0,0,0,0.12);
 
-  /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
 
-  /* Transitions */
   --transition: 0.25s ease;
 }
 
-/* ===== 2. DARK MODE VARIABLES ===== */
 [data-theme="dark"] {
   --bg-primary:    #1f2937;
   --bg-secondary:  #111827;
@@ -65,7 +58,6 @@
   --shadow-lg: 0 10px 24px rgba(0,0,0,0.5);
 }
 
-/* ===== 3. GLOBAL RESET & BASE ===== */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -105,14 +97,11 @@ p {
   margin-bottom: 1rem;
 }
 
-
-/* ===== 4. LAYOUT: SIDEBAR + MAIN ===== */
 .app-container {
   display: flex;
   min-height: 100vh;
 }
 
-/* --- Sidebar --- */
 .sidebar {
   width: 260px;
   background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
@@ -152,7 +141,6 @@ p {
   font-size: 1.4rem;
 }
 
-/* Sidebar Navigation Links */
 .sidebar-menu {
   list-style: none;
   padding: 1rem 0;
@@ -194,12 +182,10 @@ p {
   border-left-color: var(--primary);
 }
 
-/* Sidebar scrollbar */
 .sidebar::-webkit-scrollbar { width: 5px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
 
-/* --- Main Content Area --- */
 .main-content {
   flex: 1;
   margin-left: 260px;
@@ -218,8 +204,6 @@ p {
   margin: 0 auto;
 }
 
-
-/* ===== 5. TOP BAR (Header) ===== */
 .top-bar {
   background: var(--bg-primary);
   padding: 1rem 2rem;
@@ -251,7 +235,6 @@ p {
   font-size: 1.1rem;
 }
 
-/* Dark Mode Toggle Button */
 #darkModeToggle {
   background: none;
   border: 1px solid var(--border-color);
@@ -272,7 +255,6 @@ p {
   color: var(--text-primary);
 }
 
-/* Logout Link in Top Bar */
 .top-bar a[href*="logout"] {
   display: flex;
   align-items: center;
@@ -290,8 +272,6 @@ p {
   color: var(--danger);
 }
 
-
-/* ===== 6. ALERTS / MESSAGES ===== */
 .messages-container {
   padding: 1.5rem 2rem 0;
 }
@@ -333,8 +313,6 @@ p {
   border-color: rgba(59,130,246,0.25);
 }
 
-
-/* ===== 7. CARDS ===== */
 .card {
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
@@ -374,7 +352,6 @@ p {
   margin-bottom: 0;
 }
 
-/* Metric card special variant */
 .card-metric {
   text-align: center;
 }
@@ -395,8 +372,6 @@ p {
   font-weight: 600;
 }
 
-
-/* ===== 8. BUTTONS ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -419,7 +394,6 @@ p {
   box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
 }
 
-/* Primary */
 .btn-primary {
   background: var(--primary);
   color: white;
@@ -434,7 +408,6 @@ p {
   box-shadow: var(--shadow-md);
 }
 
-/* Secondary */
 .btn-secondary {
   background: var(--gray-200);
   color: var(--gray-700);
@@ -447,7 +420,6 @@ p {
   color: var(--gray-800);
 }
 
-/* Danger */
 .btn-danger {
   background: var(--danger);
   color: white;
@@ -461,7 +433,6 @@ p {
   transform: translateY(-1px);
 }
 
-/* Outline */
 .btn-outline {
   background: transparent;
   border-color: var(--primary);
@@ -473,13 +444,11 @@ p {
   color: white;
 }
 
-/* Small size */
 .btn-small, .btn-sm {
   padding: 0.3rem 0.75rem;
   font-size: 0.82rem;
 }
 
-/* Bootstrap overrides for buttons used in templates */
 .btn-outline-success {
   border-color: var(--success) !important;
   color: var(--success) !important;
@@ -520,8 +489,6 @@ p {
   box-shadow: none !important;
 }
 
-
-/* ===== 9. BADGES ===== */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -540,8 +507,6 @@ p {
 .badge-info    { background: rgba(59,130,246,0.12); color: var(--info);    }
 .badge-primary { background: rgba(99,102,241,0.12); color: var(--primary); }
 
-
-/* ===== 10. FORMS ===== */
 .form-group {
   margin-bottom: 1.25rem;
 }
@@ -611,11 +576,8 @@ select.form-control {
   margin-top: 0.35rem;
 }
 
-/* Crispy forms / Django form labels */
 .asteriskField { color: var(--danger); margin-left: 2px; }
 
-
-/* ===== 11. TABLES ===== */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -663,10 +625,6 @@ select.form-control {
   align-items: center;
 }
 
-
-/* ===== 12. UTILITY / HELPER CLASSES ===== */
-
-/* Text */
 .text-muted     { color: var(--text-secondary); }
 .text-grey      { color: var(--gray-500); }
 .text-small     { font-size: 0.875rem; }
@@ -677,7 +635,6 @@ select.form-control {
 .text-3xl       { font-size: 1.75rem; }
 .text-4xl       { font-size: 2rem; }
 
-/* Links */
 .link {
   font-weight: 600;
   color: var(--primary);
@@ -686,7 +643,6 @@ select.form-control {
 }
 .link:hover { color: var(--primary-dark); }
 
-/* Spacing shorthands */
 .mb-1 { margin-bottom: 0.25rem; }
 .mb-2 { margin-bottom: 0.5rem; }
 .mb-3 { margin-bottom: 0.75rem; }
@@ -701,7 +657,6 @@ select.form-control {
 .p-4  { padding: 1rem; }
 .p-6  { padding: 1.5rem; }
 
-/* Flex utilities */
 .flex         { display: flex; }
 .flex-center  { display: flex; align-items: center; justify-content: center; }
 .flex-between { display: flex; align-items: center; justify-content: space-between; }
@@ -711,13 +666,11 @@ select.form-control {
 .gap-4 { gap: 1rem; }
 .gap-6 { gap: 1.5rem; }
 
-/* Grid layouts */
 .grid   { display: grid; gap: 1.5rem; }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .grid-4 { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
 
-/* Avatar initials circle */
 .avatar {
   width: 36px;
   height: 36px;
@@ -732,8 +685,6 @@ select.form-control {
   flex-shrink: 0;
 }
 
-
-/* ===== 13. AUTH PAGES (Login & Register) ===== */
 body.auth-page {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
@@ -796,7 +747,6 @@ body.auth-page {
   gap: 1rem;
 }
 
-/* Icon inside inputs */
 .form-input-wrapper {
   position: relative;
   display: flex;
@@ -891,7 +841,6 @@ body.auth-page {
   text-decoration: underline;
 }
 
-/* Dark mode toggle on auth pages */
 .dark-mode-toggle {
   position: fixed;
   top: 1.25rem;
@@ -917,7 +866,6 @@ body.auth-page {
   transform: scale(1.08);
 }
 
-/* Password strength bars */
 .password-strength {
   display: flex;
   gap: 0.25rem;
@@ -937,7 +885,6 @@ body.auth-page {
 .strength-bar.good   { background: var(--info); }
 .strength-bar.strong { background: var(--success); }
 
-/* Password requirements list */
 .password-requirements {
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -959,8 +906,6 @@ body.auth-page {
 .requirement-icon { color: var(--gray-400); font-size: 0.85rem; }
 .requirement-icon.valid { color: var(--success); }
 
-
-/* ===== 14. MOBILE SIDEBAR TOGGLE ===== */
 .sidebar-toggle {
   display: none;
   position: fixed;
@@ -980,8 +925,6 @@ body.auth-page {
   justify-content: center;
 }
 
-
-/* ===== 15. ANIMATIONS ===== */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -1004,11 +947,9 @@ body.auth-page {
 .animate-fadein  { animation: fadeIn  0.4s ease-out; }
 .animate-slideup { animation: slideUp 0.4s ease-out; }
 
-/* Dashboard container */
 .dashboard-container { animation: fadeIn 0.4s ease-out; }
 .customer-list-container { animation: fadeIn 0.4s ease-out; }
 
-/* Progress bar */
 .progress {
   background: var(--gray-200);
   border-radius: var(--radius-md);
@@ -1020,8 +961,6 @@ body.auth-page {
   height: 100%;
 }
 
-
-/* ===== 16. RESPONSIVE (Mobile) ===== */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
