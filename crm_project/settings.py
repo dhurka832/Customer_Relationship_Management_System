@@ -16,13 +16,13 @@ from decouple import config, Csv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-pppz&z(99!m8@5yj093@zs6==a60_qd64j&d79+y)z-n&eq-l(')
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='http://localhost:8000', cast=Csv())
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=Csv())
 
 INSTALLED_APPS = [
     'django.contrib.admin',
