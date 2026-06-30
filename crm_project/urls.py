@@ -23,7 +23,7 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('crm/',include("crm_app.urls")),
+    path('',include("crm_app.urls")),
     # path('crm/api/',include("crm_app.api_urls")),
     # path('crm/api/token/',TokenObtainPairView.as_view(),name="token_obtain_pair"),
     # path('crm/api/token/refresh/',TokenRefreshView.as_view(),name="token_refresh")
