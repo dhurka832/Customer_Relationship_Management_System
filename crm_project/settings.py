@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config, Csv
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -99,17 +100,22 @@ ALLOWED_HOSTS = [
     "localhost",
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'crmdb',
-        'USER': 'postgres',
-        'PASSWORD': 'Dhurka@2000',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    },
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'crmdb',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Dhurka@2000',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     },
+# }
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')
+    )
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
