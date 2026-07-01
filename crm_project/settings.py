@@ -97,9 +97,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        config("DATABASE_URL")
-    )
+    "default": dj_database_url.parse(config("DATABASE_URL"))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
