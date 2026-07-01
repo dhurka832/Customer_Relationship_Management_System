@@ -12,13 +12,14 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = os.environ.get("DEBUG") == "True"
+DEBUG = config("DEBUG",default=False,cast=bool)
 
 ALLOWED_HOSTS = [
     ".onrender.com",
@@ -96,8 +97,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'crm_project.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+    'default': dj_database_url.parse(
+        config("DATABASE_URL")
     )
 }
 
