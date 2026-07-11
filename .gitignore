@@ -1,0 +1,9 @@
+venv/
+staticfiles/
+db.sqlite3
+.env 
+__pycache__ 
+*.pyc 
+
+# Admin : Dhurka@345
+# Sales Executive : Radhi - Radhi@345

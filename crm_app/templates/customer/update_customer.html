@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Update Customer - CRM System{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <p class="page-eyebrow"><i class="bi bi-pencil-square"></i> Edit Record</p>
+        <h1 class="page-title">Update Customer</h1>
+        <p class="page-sub">Edit the customer details below.</p>
+    </div>
+</div>
+
+<div class="form-card">
+    <div class="form-card-body">
+        <form method="POST" id="customerForm" class="guard-unsaved">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="flex gap-3 mt-4">
+                <button type="submit" class="btn btn-ink">
+                    <i class="bi bi-check-circle"></i> Update Customer
+                </button>
+                <a href="{% url 'customer-list' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    initRequiredFieldGuard("#customerForm");
+    initUnsavedGuard("#customerForm");
+</script>
+{% endblock %}

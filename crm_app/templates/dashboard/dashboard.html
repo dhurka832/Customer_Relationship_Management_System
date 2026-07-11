@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if is_admin %}Dashboard - Admin{% else %}Dashboard - Sales{% endif %} - CRM System{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="dash-greeting-row">
+        <div>
+            <p class="dash-eyebrow">{% if is_admin %}Admin Overview{% else %}Sales Overview{% endif %}</p>
+            <h1 class="dash-greeting" id="dash-greeting" data-username="{{ user.first_name|default:user.username }}">
+                Welcome back.
+            </h1>
+            <p class="dash-sub">Here's what's happening with your pipeline today.</p>
+        </div>
+
+        <div class="dash-actions">
+            <a href="{% url 'add-customer' %}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> New Customer
+            </a>
+            <a href="{% url 'add-lead' %}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> New Lead
+            </a>
+            <a href="{% url 'add-followup' %}" class="btn btn-outline">
+                <i class="bi bi-calendar-event"></i> Schedule Follow-up
+            </a>
+        </div>
+    </div>
+
+    <div class="stat-grid">
+
+        {% if is_admin %}
+            <div class="stat-card accent-brass">
+                <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+                <p class="stat-label">Total Customers</p>
+                <div class="stat-value" data-count-target="{{ total_customers }}">0</div>
+            </div>
+        {% endif %}
+
+        <div class="stat-card accent-info">
+            <div class="stat-icon"><i class="bi bi-briefcase-fill"></i></div>
+            <p class="stat-label">Total Leads</p>
+            <div class="stat-value" data-count-target="{{ total_leads }}">0</div>
+        </div>
+
+        <div class="stat-card accent-grow">
+            <div class="stat-icon"><i class="bi bi-check-circle-fill"></i></div>
+            <p class="stat-label">Won Leads</p>
+            <div class="stat-value" data-count-target="{{ won_leads }}">0</div>
+        </div>
+
+        <div class="stat-card accent-danger">
+            <div class="stat-icon"><i class="bi bi-x-circle-fill"></i></div>
+            <p class="stat-label">Lost Leads</p>
+            <div class="stat-value" data-count-target="{{ lost_leads }}">0</div>
+        </div>
+
+        <div class="stat-card accent-brass">
+            <div class="stat-icon"><i class="bi bi-calendar-check-fill"></i></div>
+            <p class="stat-label">Active Follow-Ups</p>
+            <div class="stat-value" data-count-target="{{ active_followups }}">0</div>
+        </div>
+
+        <div class="stat-card accent-grow">
+            <div class="stat-icon"><i class="bi bi-cash-coin"></i></div>
+            <p class="stat-label">Potential Revenue</p>
+            <div class="stat-value" data-count-target="{{ potential_revenue }}" data-count-prefix="$" data-count-decimals="2" style="font-size:1.5rem;">$0</div>
+        </div>
+
+    </div>
+
+    <div class="dash-panels">
+        <div class="panel">
+            <h5><i class="bi bi-graph-up"></i> Conversion Rate</h5>
+            {% if total_leads > 0 %}
+                {% widthratio won_leads total_leads 100 as conversion_rate %}
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="text-muted">Overall rate</span>
+                    <span class="badge badge-success">{{ conversion_rate }}%</span>
+                </div>
+                <div class="rate-bar-track">
+                    <div class="rate-bar-fill" id="conversion-rate-bar" data-rate="{{ conversion_rate }}"></div>
+                </div>
+            {% else %}
+                <p class="text-muted text-center py-4">No leads data available</p>
+            {% endif %}
+        </div>
+
+        <div class="panel">
+            <h5><i class="bi bi-info-circle"></i> Quick Summary</h5>
+            <div class="summary-row">
+                <span class="text-muted">Active customers</span>
+                <span class="val">{{ total_customers|default:0 }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="text-muted">Pipeline leads</span>
+                <span class="val">{{ total_leads|default:0 }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="text-muted">Success rate</span>
+                {% if total_leads > 0 %}
+                    {% widthratio won_leads total_leads 100 as rate %}
+                    <span class="val">{{ rate }}%</span>
+                {% else %}
+                    <span class="val">&mdash;</span>
+                {% endif %}
+            </div>
+            <div class="summary-row">
+                <span class="text-muted">Revenue potential</span>
+                <span class="val">${{ potential_revenue }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

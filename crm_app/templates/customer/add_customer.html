@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Add Customer - CRM System{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <p class="page-eyebrow"><i class="bi bi-person-plus"></i> New Record</p>
+        <h1 class="page-title">Add Customer</h1>
+        <p class="page-sub">Fill in the details to add a new customer.</p>
+    </div>
+</div>
+
+<div class="form-card">
+    <div class="form-card-body">
+        <form method="POST" id="customerForm" class="guard-unsaved">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="flex gap-3 mt-4">
+                <button type="submit" class="btn btn-ink">
+                    <i class="bi bi-check-circle"></i> Save Customer
+                </button>
+                <a href="{% url 'customer-list' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    initRequiredFieldGuard("#customerForm");
+    initUnsavedGuard("#customerForm");
+</script>
+{% endblock %}

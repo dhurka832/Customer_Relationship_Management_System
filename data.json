@@ -1,0 +1,1526 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-06-15T05:52:45.753Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Rahul Kumar",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-06-15T05:53:32.826Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Priya Sharma",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-06-15T05:54:51.219Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Arjun Patel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-06-15T05:57:42.795Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Sneha Reddy",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-06-15T05:58:23.069Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "Karthik Raj",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-06-15T05:59:02.133Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "6",
+    "object_repr": "Meena Devi",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-06-15T05:59:42.083Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "7",
+    "object_repr": "Vikram Singh",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-06-15T06:00:18.995Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "Anjali Gupta",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-06-15T06:01:06.988Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "Suresh Babu",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-06-15T06:01:52.696Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "Divya Nair",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-06-15T06:02:46.530Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Rahul Kumar - New",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-06-15T06:03:03.189Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Priya Sharma - Contacted",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-06-15T06:03:25.364Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Arjun Patel - Qualified",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-06-15T06:03:49.274Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Sneha Reddy - Proposal",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-06-15T06:04:11.066Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "Karthik Raj - Won",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-06-15T06:04:27.275Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "Meena Devi - Lost",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-06-15T06:04:44.121Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "Vikram Singh - New",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-06-15T06:05:00.216Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "Anjali Gupta - Contacted",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-06-15T06:05:24.475Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "Suresh Babu - Qualified",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-06-15T06:05:47.354Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "Divya Nair - Proposal",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-06-15T06:06:35.426Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Rahul Kumar",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-06-15T06:06:59.534Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Priya Sharma",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-06-15T06:07:18.272Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Arjun Patel",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-06-15T06:07:52.055Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Sneha Reddy",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-06-15T06:08:16.945Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "Karthik Raj",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-06-15T06:08:38.402Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "6",
+    "object_repr": "Meena Devi",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-06-15T06:08:56.259Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "7",
+    "object_repr": "Vikram Singh",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-06-15T06:09:18.442Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "8",
+    "object_repr": "Anjali Gupta",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-06-15T06:09:42.999Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "9",
+    "object_repr": "Suresh Babu",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-06-15T06:10:04.859Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "10",
+    "object_repr": "Divya Nair",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-06-15T12:00:32.580Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-06-15T12:01:23.237Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-06-15T12:01:48.035Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-06-15T12:02:21.225Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-06-15T12:02:26.196Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-06-15T12:02:45.956Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-06-15T12:02:52.692Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-06-15T12:08:11.294Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-06-15T12:08:23.178Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-06-15T12:08:56.340Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-06-15T12:09:04.790Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-06-15T12:09:14.799Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-06-15T12:09:24.403Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-06-15T12:09:28.672Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-06-15T12:09:33.158Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-06-15T12:10:03.924Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-06-15T12:10:42.218Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Sales Executive",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-06-15T12:10:51.665Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Sales Executive",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-06-15T12:11:05.473Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Sales Executive",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-06-15T13:53:53.361Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-06-15T13:57:09.750Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-06-15T13:57:53.110Z",
+    "user": 1,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Sales Executive",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-06-15T14:10:08.733Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add customer",
+    "content_type": 7,
+    "codename": "add_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change customer",
+    "content_type": 7,
+    "codename": "change_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete customer",
+    "content_type": 7,
+    "codename": "delete_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view customer",
+    "content_type": 7,
+    "codename": "view_customer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add lead",
+    "content_type": 8,
+    "codename": "add_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change lead",
+    "content_type": 8,
+    "codename": "change_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete lead",
+    "content_type": 8,
+    "codename": "delete_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view lead",
+    "content_type": 8,
+    "codename": "view_lead"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add follow up",
+    "content_type": 9,
+    "codename": "add_followup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change follow up",
+    "content_type": 9,
+    "codename": "change_followup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete follow up",
+    "content_type": 9,
+    "codename": "delete_followup"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view follow up",
+    "content_type": 9,
+    "codename": "view_followup"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "Admin",
+    "permissions": [
+      13,
+      14,
+      15,
+      16,
+      25,
+      26,
+      27,
+      28,
+      36,
+      29,
+      30,
+      31,
+      32
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "Sales Executive",
+    "permissions": [
+      33,
+      30,
+      32
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$prCFEiOaak5F19QjH7jXWI$877eBpXMHv7wdIwC/+JDQC1SaI7hc4y4uQSFNgqSYl4=",
+    "last_login": "2026-06-30T15:30:13.332Z",
+    "is_superuser": true,
+    "username": "Admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-06-15T05:46:06Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$zSzff99oSCVT9BXrsLUUI6$xm7zfzMStEwLnYfpWgH7ZE41o9csjJFDBRj7RJZcqSQ=",
+    "last_login": "2026-06-27T12:57:07.399Z",
+    "is_superuser": false,
+    "username": "Radhi",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-06-15T13:31:47.395Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "crm_app",
+    "model": "customer"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "crm_app",
+    "model": "lead"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "crm_app",
+    "model": "followup"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "51j179ajldxeiazd8g0sccsx9pvr4a26",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnrT2xBSc8ZrPXuBgeQI8VJFXF3sJQC2jczb1cJt7WkrcmSJlYXZdTpd8tIT6kd8APrfdY013WZsu6KPmjTt5nldT3cv4OCrXxr8NZYGiz7cQwQs_UOHQaiSDFIBtf5QI7IAEAUZ_js0KIQe0QC9f4Ay2s3wg:1wdPQF:90JG2yTjwUIw2t1HgTHLcd7aY0fmVOxwsueK4pPQJbE",
+    "expire_date": "2026-07-11T09:33:59.573Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 1,
+  "fields": {
+    "name": "Rahul Kumar",
+    "email": "rahul@gmail.com",
+    "phone": "9876543210",
+    "company": "RK Traders",
+    "city": "Chennai",
+    "status": "Active",
+    "created_at": "2026-06-15T05:52:45.750Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 2,
+  "fields": {
+    "name": "Priya Sharma",
+    "email": "priya@gmail.com",
+    "phone": "9876543211",
+    "company": "PS Fashion",
+    "city": "Bangalore",
+    "status": "Active",
+    "created_at": "2026-06-15T05:53:32.824Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 3,
+  "fields": {
+    "name": "Arjun Patel",
+    "email": "arjun@gmail.com",
+    "phone": "9876543212",
+    "company": "Patel Electronics",
+    "city": "Ahmedabad",
+    "status": "Inactive",
+    "created_at": "2026-06-15T05:54:51.214Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 4,
+  "fields": {
+    "name": "Sneha Reddy",
+    "email": "sneha@gmail.com",
+    "phone": "9876543213",
+    "company": "SR Technologies",
+    "city": "Hyderabad",
+    "status": "Active",
+    "created_at": "2026-06-15T05:57:42.793Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 5,
+  "fields": {
+    "name": "Karthik Raj",
+    "email": "karthik@gmail.com",
+    "phone": "9876543214",
+    "company": "KR Solutions",
+    "city": "Chennai",
+    "status": "Active",
+    "created_at": "2026-06-15T05:58:23.066Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 6,
+  "fields": {
+    "name": "Meena Devi",
+    "email": "meena@gmail.com",
+    "phone": "9876543215",
+    "company": "MD Textiles",
+    "city": "Coimbatore",
+    "status": "Active",
+    "created_at": "2026-06-15T05:59:02.131Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 7,
+  "fields": {
+    "name": "Vikram Singh",
+    "email": "vikram@gmail.com",
+    "phone": "9876543216",
+    "company": "VS Builders",
+    "city": "Delhi",
+    "status": "Inactive",
+    "created_at": "2026-06-15T05:59:42.081Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 8,
+  "fields": {
+    "name": "Anjali Gupta",
+    "email": "anjali@gmail.com",
+    "phone": "9876543217",
+    "company": "AG Foods",
+    "city": "Mumbai",
+    "status": "Active",
+    "created_at": "2026-06-15T06:00:18.993Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 9,
+  "fields": {
+    "name": "Suresh Babu",
+    "email": "suresh@gmail.com",
+    "phone": "9876543218",
+    "company": "SB Logistics",
+    "city": "Chennai",
+    "status": "Active",
+    "created_at": "2026-06-15T06:01:06.986Z"
+  }
+},
+{
+  "model": "crm_app.customer",
+  "pk": 10,
+  "fields": {
+    "name": "Divya Nair",
+    "email": "divya@gmail.com",
+    "phone": "9876543219",
+    "company": "DN Healthcare",
+    "city": "Kochi",
+    "status": "Active",
+    "created_at": "2026-06-15T06:01:52.693Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "assigned_to": 1,
+    "status": "New",
+    "expected_value": "50000.00",
+    "created_at": "2026-06-15T06:02:46.506Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 2,
+  "fields": {
+    "customer": 2,
+    "assigned_to": 1,
+    "status": "Contacted",
+    "expected_value": "75000.00",
+    "created_at": "2026-06-15T06:03:03.185Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 3,
+  "fields": {
+    "customer": 3,
+    "assigned_to": 1,
+    "status": "Qualified",
+    "expected_value": "120000.00",
+    "created_at": "2026-06-15T06:03:25.359Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 4,
+  "fields": {
+    "customer": 4,
+    "assigned_to": 1,
+    "status": "Proposal",
+    "expected_value": "85000.00",
+    "created_at": "2026-06-15T06:03:49.271Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 5,
+  "fields": {
+    "customer": 5,
+    "assigned_to": 1,
+    "status": "Won",
+    "expected_value": "150000.00",
+    "created_at": "2026-06-15T06:04:11.063Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 6,
+  "fields": {
+    "customer": 6,
+    "assigned_to": 1,
+    "status": "Lost",
+    "expected_value": "40000.00",
+    "created_at": "2026-06-15T06:04:27.270Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 7,
+  "fields": {
+    "customer": 7,
+    "assigned_to": 1,
+    "status": "New",
+    "expected_value": "60000.00",
+    "created_at": "2026-06-15T06:04:44.117Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 8,
+  "fields": {
+    "customer": 8,
+    "assigned_to": 1,
+    "status": "Contacted",
+    "expected_value": "95000.00",
+    "created_at": "2026-06-15T06:05:00.213Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 9,
+  "fields": {
+    "customer": 9,
+    "assigned_to": 1,
+    "status": "Qualified",
+    "expected_value": "110000.00",
+    "created_at": "2026-06-15T06:05:24.470Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 10,
+  "fields": {
+    "customer": 10,
+    "assigned_to": 1,
+    "status": "Proposal",
+    "expected_value": "130000.00",
+    "created_at": "2026-06-15T06:05:47.352Z"
+  }
+},
+{
+  "model": "crm_app.lead",
+  "pk": 11,
+  "fields": {
+    "customer": 10,
+    "assigned_to": 2,
+    "status": "New",
+    "expected_value": "25000.00",
+    "created_at": "2026-06-15T14:49:34.758Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 1,
+  "fields": {
+    "lead": 1,
+    "Followup_date": "2026-08-20",
+    "notes": "Discuss eCommerce website requirements",
+    "completed": false,
+    "created_at": "2026-06-15T06:06:35.416Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 2,
+  "fields": {
+    "lead": 2,
+    "Followup_date": "2026-07-21",
+    "notes": "Send product catalog",
+    "completed": true,
+    "created_at": "2026-06-15T06:06:59.524Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 3,
+  "fields": {
+    "lead": 3,
+    "Followup_date": "2026-07-22",
+    "notes": "Arrange demo meeting",
+    "completed": false,
+    "created_at": "2026-06-15T06:07:18.260Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 4,
+  "fields": {
+    "lead": 4,
+    "Followup_date": "2026-08-23",
+    "notes": "Follow-up on proposal",
+    "completed": false,
+    "created_at": "2026-06-15T06:07:52.044Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 5,
+  "fields": {
+    "lead": 5,
+    "Followup_date": "2026-08-24",
+    "notes": "Contract signing discussion",
+    "completed": true,
+    "created_at": "2026-06-15T06:08:16.935Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 6,
+  "fields": {
+    "lead": 6,
+    "Followup_date": "2026-08-25",
+    "notes": "Check if requirements changed",
+    "completed": false,
+    "created_at": "2026-06-15T06:08:38.393Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 7,
+  "fields": {
+    "lead": 7,
+    "Followup_date": "2026-08-26",
+    "notes": "Initial sales call",
+    "completed": false,
+    "created_at": "2026-06-15T06:08:56.249Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 8,
+  "fields": {
+    "lead": 8,
+    "Followup_date": "2026-08-27",
+    "notes": "Discuss pricing details",
+    "completed": true,
+    "created_at": "2026-06-15T06:09:18.431Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 9,
+  "fields": {
+    "lead": 9,
+    "Followup_date": "2026-08-28",
+    "notes": "Schedule project presentation",
+    "completed": false,
+    "created_at": "2026-06-15T06:09:42.990Z"
+  }
+},
+{
+  "model": "crm_app.followup",
+  "pk": 10,
+  "fields": {
+    "lead": 10,
+    "Followup_date": "2026-08-29",
+    "notes": "Clarify technical questions",
+    "completed": false,
+    "created_at": "2026-06-15T06:10:04.850Z"
+  }
+}
+]

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Add Follow-Up - CRM System{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <p class="page-eyebrow"><i class="bi bi-calendar-plus"></i> New Record</p>
+        <h1 class="page-title">Add Follow-Up</h1>
+        <p class="page-sub">Schedule a new follow-up with a customer.</p>
+    </div>
+</div>
+
+<div class="form-card">
+    <div class="form-card-body">
+        <form method="POST" id="followupForm" class="guard-unsaved">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="field-char-count" id="notesCharCount"></div>
+
+            <div class="flex gap-3 mt-4">
+                <button type="submit" class="btn btn-ink">
+                    <i class="bi bi-calendar-check"></i> Save Follow-Up
+                </button>
+                <a href="{% url 'customer-list' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    initRequiredFieldGuard("#followupForm");
+    initUnsavedGuard("#followupForm");
+    initCharCount("id_notes", "notesCharCount", 500);
+</script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Add Lead - CRM System{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <p class="page-eyebrow"><i class="bi bi-briefcase-fill"></i> New Record</p>
+        <h1 class="page-title">Add Lead</h1>
+        <p class="page-sub">Fill in the details to add a new lead.</p>
+    </div>
+</div>
+
+<div class="form-card">
+    <div class="form-card-body">
+        <form method="POST" id="leadForm" class="guard-unsaved">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="flex gap-3 mt-4">
+                <button type="submit" class="btn btn-ink">
+                    <i class="bi bi-check-circle"></i> Save Lead
+                </button>
+                <a href="{% url 'lead-list' %}" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    initRequiredFieldGuard("#leadForm");
+    initUnsavedGuard("#leadForm");
+</script>
+{% endblock %}

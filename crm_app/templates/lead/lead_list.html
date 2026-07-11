@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block title %}Leads - CRM System{% endblock %}
+
+{% block content %}
+
+<div class="leads-list-container">
+
+    <div class="page-header">
+        <div>
+            <p class="page-eyebrow"><i class="bi bi-briefcase"></i> Pipeline</p>
+            <h1 class="page-title">Leads</h1>
+            <p class="page-sub">Track and manage all your sales leads</p>
+        </div>
+        {% if is_admin %}
+            <a href="{% url 'add-lead' %}" class="btn btn-ink">
+                <i class="bi bi-plus-circle"></i> Add Lead
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="filter-card">
+        <form method="GET" action="{% url 'lead-list' %}" class="row g-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="searchLead" class="form-label">
+                        <i class="bi bi-search"></i> Search Leads
+                    </label>
+                    <input type="text" name="search" id="searchLead" class="form-control" placeholder="Search by customer or assigned user..." value="{{ search_query|default:'' }}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="filterStatus" class="form-label">Status</label>
+                    <select name="status" id="filterStatus" class="form-control">
+                        <option value="">All Statuses</option>
+                        <option value="New" {% if status_query == 'New' %}selected{% endif %}>New</option>
+                        <option value="Contacted" {% if status_query == 'Contacted' %}selected{% endif %}>Contacted</option>
+                        <option value="Qualified" {% if status_query == 'Qualified' %}selected{% endif %}>Qualified</option>
+                        <option value="Proposal" {% if status_query == 'Proposal' %}selected{% endif %}>Proposal</option>
+                        <option value="Won" {% if status_query == 'Won' %}selected{% endif %}>Won</option>
+                        <option value="Lost" {% if status_query == 'Lost' %}selected{% endif %}>Lost</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-ink w-50">
+                    <i class="bi bi-filter"></i> Filter
+                </button>
+                <a href="{% url 'lead-list' %}" class="btn btn-secondary w-50" style="text-align: center; justify-content: center; display: flex; align-items: center;">
+                    <i class="bi bi-arrow-counterclockwise"></i> Reset
+                </a>
+            </div>
+        </form>
+    </div>
+
+    {% if leads %}
+        <div class="table-card">
+            <div class="table-responsive">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">
+                                <i class="bi bi-person"></i> Customer
+                            </th>
+                            <th style="width: 15%;">
+                                <i class="bi bi-tag"></i> Status
+                            </th>
+                            <th style="width: 15%;">
+                                <i class="bi bi-cash-coin"></i> Value
+                            </th>
+                            <th style="width: 20%;">
+                                <i class="bi bi-person-badge"></i> Assigned To
+                            </th>
+                            <th style="width: 10%;">
+                                <i class="bi bi-calendar"></i> Created
+                            </th>
+                            {% if is_admin %}
+                                <th style="width: 20%;">Actions</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody id="leadTableBody">
+                        {% for lead in leads %}
+                            <tr class="lead-row" data-customer="{{ lead.customer.name|lower }}" data-status="{{ lead.status }}" data-assigned="{% if lead.assigned_to %}{{ lead.assigned_to.username|lower }}{% else %}unassigned{% endif %}">
+                                <td>
+                                    <div class="flex gap-3" style="align-items: center;">
+                                        <div class="avatar">
+                                            {{ lead.customer.name|first }}
+                                        </div>
+                                        <span class="font-semibold text-muted">{{ lead.customer.name }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {% if lead.status == "Won" %}
+                                        <span class="badge badge-success">
+                                            <i class="bi bi-check-circle-fill"></i> {{ lead.status }}
+                                        </span>
+                                    {% elif lead.status == "Lost" %}
+                                        <span class="badge badge-danger">
+                                            <i class="bi bi-x-circle-fill"></i> {{ lead.status }}
+                                        </span>
+                                    {% elif lead.status == "Qualified" %}
+                                        <span class="badge badge-warning">
+                                            <i class="bi bi-star-fill"></i> {{ lead.status }}
+                                        </span>
+                                    {% elif lead.status == "Contacted" %}
+                                        <span class="badge badge-info">
+                                            <i class="bi bi-chat-dots-fill"></i> {{ lead.status }}
+                                        </span>
+                                    {% elif lead.status == "New" %}
+                                        <span class="badge badge-primary">
+                                            <i class="bi bi-circle-fill"></i> {{ lead.status }}
+                                        </span>
+                                    {% elif lead.status == "Proposal" %}
+                                        <span class="badge" style="background: rgba(139, 92, 246, 0.1); color: var(--secondary);">
+                                            <i class="bi bi-file-earmark-pdf-fill"></i> {{ lead.status }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge" style="background: rgba(107, 114, 128, 0.1); color: var(--gray-600);">
+                                            {{ lead.status }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="font-semibold" style="color: var(--success);">
+                                        <i class="bi bi-cash"></i> ${{ lead.expected_value|default:0 }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-muted text-small">
+                                        {% if lead.assigned_to %}
+                                            {{ lead.assigned_to.username }}
+                                        {% else %}
+                                            <span style="opacity: 0.5;">Unassigned</span>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-muted text-small">
+                                        {{ lead.created_at|date:"M d, Y" }}
+                                    </div>
+                                </td>
+                                {% if is_admin %}
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="{% url 'update-lead' lead.id %}" class="btn btn-small btn-outline-warning" title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <a href="{% url 'delete-lead' lead.id %}" class="btn btn-small btn-outline-danger" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        <tr class="no-results-row" id="noResultsRow" style="display:none;">
+                            <td colspan="6">
+                                <i class="bi bi-search" style="font-size:1.5rem; display:block; margin-bottom:0.5rem;"></i>
+                                No leads match your search.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="table-card" style="text-align: center;">
+            <div class="card-body py-8">
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--gray-300);">
+                    <i class="bi bi-inbox"></i>
+                </div>
+                <h4 class="text-muted mb-2">No Leads Found</h4>
+                <p class="text-muted mb-4">Start by creating your first lead to begin tracking opportunities.</p>
+                {% if is_admin %}
+                    <a href="{% url 'add-lead' %}" class="btn btn-ink">
+                        <i class="bi bi-plus-circle"></i> Create Lead
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="result-count-bar">
+        <i class="bi bi-info-circle"></i> Showing <strong id="resultCount">{{ leads|length }}</strong> lead(s)
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    initListFilter({
+        searchId: "searchLead",
+        statusId: "filterStatus",
+        rowSelector: ".lead-row",
+        searchFields: ["customer", "assigned"],
+        countId: "resultCount",
+        noResultsId: "noResultsRow"
+    });
+</script>
+{% endblock %}
