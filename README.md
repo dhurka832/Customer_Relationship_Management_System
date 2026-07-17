@@ -91,13 +91,16 @@ crm_project/
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/admin-dashboard.jpg" alt="Admin Dashboard View" width="400"/>
+  <img src="screenshots/crm-admin-dashboard.jpg" alt="Admin Dashboard View" width="400"/>
   <img src="screenshots/customers-list.jpg" alt="Customers List View" width="400"/>
   <img src="screenshots/leads-list.jpg" alt="Leads List View" width="400"/>
-  <img src="screenshots/sales-dashboard.jpg" alt="Sales Dashboard View" width="400"/>
-  <img src="screenshots/sales-leads.jpg" alt="Customers List View" width="400"/>
+  <img src="screenshots/crm-sales-dashboard.jpg" alt="Sales Dashboard View" width="400"/>
+  <img src="screenshots/sales-leads.jpg" alt="Sales Leads View" width="400"/>
+  <img src="screenshots/add-customer.jpg" alt="Add Customer View" width="400"/>
+  <img src="screenshots/add-lead.jpg" alt="Add Lead View" width="400"/>
+  <img src="screenshots/add-followup.jpg" alt="Add Followup View" width="400"/>
   <img src="screenshots/register.jpg" alt="Register View" width="400"/>
-  <img src="screenshots/login.jpg" alt="Login View" width="400"/>
+  <img src="screenshots/crm-login.jpg" alt="Login View" width="400"/>
 </p>
 
 ---
@@ -138,7 +141,6 @@ crm_project/
    DEBUG=True
    DATABASE_URL=postgres://your_db_user:your_db_password@localhost:5432/your_db_name
    ```
-   > ⚠️ **Never commit `.env`.** It's already listed in `.gitignore` — keep it that way, and don't include it in zips/archives you share. If real credentials ever end up in git history or a shared file, rotate the DB password and `SECRET_KEY` immediately rather than just deleting the file.
 
 5. **Apply Database Migrations**
    ```bash
@@ -155,7 +157,6 @@ crm_project/
    ```bash
    python manage.py collectstatic
    ```
-   This copies every app's `static/` files into the `staticfiles/` folder, which WhiteNoise serves in production. `staticfiles/` is a **generated build artifact** — it's gitignored and should never be hand-edited; always change the source files under `crm_app/static/` instead.
 
 8. **Run the Development Server**
    ```bash
@@ -212,11 +213,6 @@ SECRET_KEY=<generate a new one for production>
 DEBUG=False
 DATABASE_URL=<your Render PostgreSQL internal connection string>
 ```
-
-Static files are served directly by Django via WhiteNoise (`CompressedManifestStaticFilesStorage`) — no separate nginx or CDN needed. `build.sh` runs `collectstatic` on every deploy, which regenerates the `staticfiles/` folder from scratch, so it never needs to be committed to git.
-
----
-
 ## 👤 User Roles & Permissions
 
 ### Admin (Superuser)
