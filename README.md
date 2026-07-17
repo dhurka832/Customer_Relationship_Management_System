@@ -92,14 +92,13 @@ crm_project/
 
 <p align="center">
   <img src="screenshots/crm-admin-dashboard.jpg" alt="Admin Dashboard View" width="400"/>
-  <img src="screenshots/customers-list.jpg" alt="Customers List View" width="400"/>
+  <img src="screenshots/customer-list.jpg" alt="Customers List View" width="400"/>
   <img src="screenshots/leads-list.jpg" alt="Leads List View" width="400"/>
   <img src="screenshots/crm-sales-dashboard.jpg" alt="Sales Dashboard View" width="400"/>
-  <img src="screenshots/sales-leads.jpg" alt="Sales Leads View" width="400"/>
   <img src="screenshots/add-customer.jpg" alt="Add Customer View" width="400"/>
   <img src="screenshots/add-lead.jpg" alt="Add Lead View" width="400"/>
   <img src="screenshots/add-followup.jpg" alt="Add Followup View" width="400"/>
-  <img src="screenshots/register.jpg" alt="Register View" width="400"/>
+  <img src="screenshots/register_crm.jpg" alt="Register View" width="400"/>
   <img src="screenshots/crm-login.jpg" alt="Login View" width="400"/>
 </p>
 
