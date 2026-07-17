@@ -73,7 +73,7 @@
                         </div>
                     {% endfor %}
                 {% endif %}
-
+                
                 <form method="POST" class="auth-form">
                     {% csrf_token %}
 
@@ -117,6 +117,28 @@
                         <span class="btn-auth-label">Sign In</span>
                     </button>
                 </form>
+
+                <div class="demo-credentials mt-4">
+                    <h6 class="text-center mb-3">
+                        <i class="bi bi-info-circle-fill"></i> Demo Credentials
+                    </h6>
+
+                   <div class="d-flex justify-content-center gap-2 flex-wrap">
+                        <div class="demo-cred-pill"
+                            onclick="fillCredentials('Admin','Dhurka@345')">
+                            <i class="bi bi-person-fill"></i>
+                            <span>User:</span>
+                            <strong>Admin</strong>
+                        </div>
+
+                        <div class="demo-cred-pill"
+                            onclick="fillCredentials('Admin','Dhurka@345')">
+                            <i class="bi bi-key-fill"></i>
+                            <span>Password:</span>
+                            <strong>Dhurka@345</strong>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="auth-alt">
                     Don't have an account? <a href="{% url 'register' %}">Create one</a>
