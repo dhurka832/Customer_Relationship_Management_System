@@ -1,6 +1,4 @@
-/* auth.js — plain functions, no dependencies */
 
-// Toggle a password field between hidden/visible dots
 function togglePasswordField(inputId, btn) {
   var input = document.getElementById(inputId);
   if (!input) return;
@@ -11,7 +9,6 @@ function togglePasswordField(inputId, btn) {
     : '<i class="bi bi-eye-slash"></i>';
 }
 
-// Checks a password against the same rules enforced server-side
 function checkPasswordRules(password) {
   return {
     length: password.length >= 6,
@@ -21,7 +18,6 @@ function checkPasswordRules(password) {
   };
 }
 
-// Updates the little 4-segment strength meter + rule checklist on Register
 function updatePasswordStrength(password) {
   var rules = checkPasswordRules(password);
   var passed = Object.values(rules).filter(Boolean).length;
@@ -48,7 +44,6 @@ function updatePasswordStrength(password) {
   return passed === 4;
 }
 
-// Shows/hides the "passwords match" hint on Register
 function checkPasswordsMatch(password, confirm) {
   var errorEl = document.getElementById("password-match-error");
   if (!errorEl) return true;
@@ -57,13 +52,11 @@ function checkPasswordsMatch(password, confirm) {
   return matches;
 }
 
-// Puts a button into a small spinner/loading state on submit
 function setButtonLoading(btn) {
   btn.classList.add("is-loading");
   btn.disabled = true;
 }
 
-// Animates a number counting up — used for the ledger ticker on auth pages
 function animateTickerValue(el, target, prefix, suffix) {
   var start = 0;
   var duration = 1200;
@@ -81,14 +74,12 @@ function animateTickerValue(el, target, prefix, suffix) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // wire up any [data-toggle-password] buttons
   document.querySelectorAll("[data-toggle-password]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       togglePasswordField(btn.getAttribute("data-toggle-password"), btn);
     });
   });
 
-  // live strength meter + match check on the register form
   var pw = document.getElementById("password");
   var pw2 = document.getElementById("password2");
   if (pw && document.querySelector(".pw-meter")) {
@@ -103,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // loading state on submit for any .btn-auth
   document.querySelectorAll("form.auth-form").forEach(function (form) {
     form.addEventListener("submit", function () {
       var btn = form.querySelector(".btn-auth");
@@ -111,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // animate the ledger ticker numbers on the left panel, if present
   document.querySelectorAll("[data-ticker-value]").forEach(function (el) {
     var target = parseInt(el.getAttribute("data-ticker-value"), 10) || 0;
     var prefix = el.getAttribute("data-ticker-prefix") || "";

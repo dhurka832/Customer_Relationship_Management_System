@@ -685,12 +685,6 @@ select.form-control {
   flex-shrink: 0;
 }
 
-/* Auth page (login/register) layout & components now live entirely in
-   theme.css (.auth-shell / .auth-ledger / .auth-card / .field / .btn-auth).
-   The old centered-card design that used to live here has been removed —
-   it was dead code that collided with theme.css's class names and was
-   squashing the split-screen layout into a small centered box. */
-
 .dark-mode-toggle {
   position: fixed;
   top: 1.25rem;

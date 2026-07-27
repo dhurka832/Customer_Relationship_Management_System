@@ -1,6 +1,3 @@
-/* dashboard.js — plain functions, no dependencies */
-
-// Returns "Good morning" / "Good afternoon" / "Good evening" for the current hour
 function getGreeting() {
   var hour = new Date().getHours();
   if (hour < 12) return "Good morning";
@@ -8,7 +5,6 @@ function getGreeting() {
   return "Good evening";
 }
 
-// Writes the greeting + first name into the dashboard header
 function renderGreeting() {
   var el = document.getElementById("dash-greeting");
   if (!el) return;
@@ -16,7 +12,6 @@ function renderGreeting() {
   el.textContent = getGreeting() + (name ? ", " + name : "") + ".";
 }
 
-// Formats and writes the current time into the top bar, refreshing every second
 function tickClock() {
   var el = document.getElementById("top-bar-clock");
   if (!el) return;
@@ -27,7 +22,6 @@ function tickClock() {
   el.textContent = dateStr + " \u2022 " + timeStr;
 }
 
-// Counts a number up from 0 to target with easing — used on the stat cards
 function animateCount(el, target, opts) {
   opts = opts || {};
   var duration = opts.duration || 1000;
@@ -53,14 +47,12 @@ function animateCount(el, target, opts) {
   requestAnimationFrame(step);
 }
 
-// Fills in the horizontal conversion-rate bar
 function animateRateBar(el, percent) {
   requestAnimationFrame(function () {
     el.style.width = Math.max(0, Math.min(100, percent)) + "%";
   });
 }
 
-// Collapses/expands the sidebar on small screens
 function toggleSidebar() {
   document.getElementById("sidebar").classList.toggle("open");
 }

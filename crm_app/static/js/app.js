@@ -1,8 +1,3 @@
-/* app.js — plain functions, no dependencies. Powers list, form, profile and
-   delete-confirmation pages for customers, leads and follow-ups. */
-
-// Filters a set of table rows client-side against a search box + status select,
-// reading match text from each row's data-* attributes.
 function initListFilter(opts) {
   var searchInput = opts.searchId ? document.getElementById(opts.searchId) : null;
   var statusSelect = opts.statusId ? document.getElementById(opts.statusId) : null;
@@ -35,8 +30,6 @@ function initListFilter(opts) {
   apply();
 }
 
-// Copies the given text to the clipboard and flips the button to a
-// "Copied" state for a moment.
 function copyToClipboard(text, btn) {
   var restore = function () {
     btn.classList.remove("copied");
@@ -49,8 +42,6 @@ function copyToClipboard(text, btn) {
   });
 }
 
-// Enables a delete button only once the user types the expected phrase —
-// a small safety net for destructive actions.
 function initDeleteConfirm(inputId, buttonId, expected) {
   var input = document.getElementById(inputId);
   var button = document.getElementById(buttonId);
@@ -61,15 +52,12 @@ function initDeleteConfirm(inputId, buttonId, expected) {
   });
 }
 
-// Briefly shakes an element — used to draw the eye to an empty required field.
 function shakeElement(el) {
   el.classList.remove("shake");
   void el.offsetWidth; // restart animation
   el.classList.add("shake");
 }
 
-// On submit, shakes and focuses the first empty required field instead of
-// only relying on the browser's native validation bubble.
 function initRequiredFieldGuard(formSelector) {
   var form = document.querySelector(formSelector);
   if (!form) return;
@@ -86,7 +74,6 @@ function initRequiredFieldGuard(formSelector) {
   });
 }
 
-// Warns before navigating away from a form with unsaved changes.
 function initUnsavedGuard(formSelector) {
   var form = document.querySelector(formSelector);
   if (!form) return;
@@ -104,7 +91,6 @@ function initUnsavedGuard(formSelector) {
   });
 }
 
-// Live character counter under a textarea, e.g. follow-up notes.
 function initCharCount(textareaId, counterId, max) {
   var textarea = document.getElementById(textareaId);
   var counter = document.getElementById(counterId);

@@ -1,9 +1,3 @@
-/* ==========================================================================
-   Theme — "Ledger" system
-   A control-room aesthetic for a sales CRM: ink-navy + brass/amber accent,
-   Space Grotesk for numerals/headings, Inter for body text.
-   Layered on top of style.css — does not touch customer/lead table pages.
-   ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -21,16 +15,12 @@
   --brass-bright:#F0BE68;
   --brass-dim:rgba(217,162,75,0.18);
 
-  --grow:#33B692;   /* growth/success accent, distinct from bootstrap green */
+  --grow:#33B692;   
   --grow-dim:rgba(51,182,146,0.16);
 
   --font-display:'Space Grotesk', 'Segoe UI', sans-serif;
   --font-body:'Inter', 'Segoe UI', sans-serif;
 }
-
-/* ==========================================================================
-   Shared bits
-   ========================================================================== */
 
 .tick-label{
   font-family: var(--font-body);
@@ -39,10 +29,6 @@
   font-size: 0.72rem;
   font-weight: 600;
 }
-
-/* ==========================================================================
-   AUTH PAGES — split screen
-   ========================================================================== */
 
 body.auth-page{
   background: var(--paper);
@@ -56,7 +42,6 @@ body.auth-page{
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
 }
 
-/* ---- Left: ledger panel ---- */
 .auth-ledger{
   position: relative;
   background:
@@ -71,7 +56,6 @@ body.auth-page{
 }
 
 .auth-ledger::before{
-  /* faint grid, evokes a trading-floor / ledger sheet */
   content:"";
   position: absolute;
   inset: 0;
@@ -119,7 +103,6 @@ body.auth-page{
   margin: 0;
 }
 
-/* sparkline signature graphic */
 .auth-spark{
   position: relative;
   margin-top: 2.25rem;
@@ -143,7 +126,6 @@ body.auth-page{
 @keyframes draw-spark{ to{ stroke-dashoffset: 0; } }
 @keyframes fade-in{ to{ opacity: 1; } }
 
-/* live ticker of stats — updated by a small JS function */
 .auth-ticker{
   position: relative;
   border-top: 1px solid var(--ink-line);
@@ -173,7 +155,6 @@ body.auth-page{
   font-size: 0.78rem;
 }
 
-/* ---- Right: form panel ---- */
 .auth-form-panel{
   background: var(--paper);
   display: flex;
@@ -278,7 +259,6 @@ body.auth-page{
 }
 .field-error.show{ display:flex; }
 
-/* password strength meter (register only) */
 .pw-meter{
   display:flex;
   gap: 4px;
@@ -403,10 +383,6 @@ body.auth-page{
   .auth-spark{ display:none; }
 }
 
-/* ==========================================================================
-   APP SHELL — sidebar / topbar (used by dashboard + all inner pages)
-   ========================================================================== */
-
 body{ font-family: var(--font-body); }
 
 .app-container .sidebar{
@@ -459,10 +435,7 @@ body{ font-family: var(--font-body); }
 }
 
 .content{ background: var(--paper); }
-
-/* ==========================================================================
-   DASHBOARD
-   ========================================================================== */
+   
 
 .dash-greeting-row{
   display:flex;
@@ -608,10 +581,6 @@ body{ font-family: var(--font-body); }
   color: var(--ink-900);
 }
 
-/* ==========================================================================
-   PAGE HEADER — used on list, profile, and form pages
-   ========================================================================== */
-
 .page-header{
   display:flex;
   align-items:flex-end;
@@ -650,10 +619,6 @@ body{ font-family: var(--font-body); }
 }
 .btn-ink:hover{ background: var(--ink-700); color:#fff; }
 
-/* ==========================================================================
-   FILTER / TOOLBAR CARD
-   ========================================================================== */
-
 .filter-card{
   background: var(--paper-card);
   border: 1px solid #ECEAE2;
@@ -682,10 +647,6 @@ body{ font-family: var(--font-body); }
   border-color: var(--brass);
   box-shadow: 0 0 0 4px var(--brass-dim);
 }
-
-/* ==========================================================================
-   MODERN TABLE (list pages)
-   ========================================================================== */
 
 .table-card{
   background: var(--paper-card);
@@ -745,10 +706,6 @@ body{ font-family: var(--font-body); }
   padding: 2.2rem 1rem;
 }
 
-/* ==========================================================================
-   FORM CARD (add/update customer, lead, follow-up)
-   ========================================================================== */
-
 .form-card{
   background: var(--paper-card);
   border: 1px solid #ECEAE2;
@@ -797,10 +754,6 @@ body{ font-family: var(--font-body); }
   40%,60%{ transform: translateX(4px); }
 }
 
-/* ==========================================================================
-   PROFILE PAGE
-   ========================================================================== */
-
 .profile-hero{
   display:flex;
   align-items:center;
@@ -843,10 +796,6 @@ body{ font-family: var(--font-body); }
 }
 .copy-btn:hover{ border-color: var(--brass); color: var(--brass); }
 .copy-btn.copied{ border-color: var(--grow); color: var(--grow); }
-
-/* ==========================================================================
-   DELETE CONFIRMATION (type-to-confirm)
-   ========================================================================== */
 
 .confirm-card{
   border: 1px solid #ECEAE2;
