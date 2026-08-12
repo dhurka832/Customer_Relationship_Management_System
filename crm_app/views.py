@@ -61,6 +61,7 @@ def customer_profile(request, pk):
 
     return render(request,'customer/customer_profile.html',context)
     
+@login_required
 def update_customer(request,pk):
     customer = Customer.objects.get(id=pk)
     form = CustomerForm(instance=customer)
@@ -260,7 +261,7 @@ def add_followup(request):
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_class = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     filter_backends = [
         filters.SearchFilter,
@@ -278,4 +279,4 @@ class CustomerViewSet(viewsets.ModelViewSet):
 class LeadViewSet(viewsets.ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
-    permission_class = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
