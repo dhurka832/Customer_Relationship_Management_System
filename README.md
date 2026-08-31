@@ -4,22 +4,22 @@ A modern, full-featured Customer Relationship Management (CRM) application built
 
 ---
 
-## 🎯 Features
+## Features
 
-### 🔐 Authentication & Authorization
+### Authentication & Authorization
 - User registration and login with secure authentication
 - Role-based access control (Admin and Sales Executive)
 - JWT token-based API authentication
 - Modern, responsive login/register pages
 
-### 👥 Customer Management
+### Customer Management
 - Add, view, update, and delete customer records
 - Detailed customer profiles with contact information
 - Customer status tracking (Active/Inactive)
 - Search customers by name, email, or phone
 - Comprehensive customer history and linked activities
 
-### 📊 Lead Management
+### Lead Management
 - Create and manage sales leads linked to customers
 - Assign leads to team members
 - Track lead progress through sales pipeline
@@ -27,13 +27,13 @@ A modern, full-featured Customer Relationship Management (CRM) application built
 - Expected value tracking for revenue forecasting
 - Real-time lead status updates
 
-### ✅ Follow-Up Management
+### Follow-Up Management
 - Schedule follow-up tasks for leads
 - Add detailed notes to follow-ups
 - Mark follow-ups as completed
 - Track pending follow-ups for accountability
 
-### 📈 Dashboard & Analytics
+### Dashboard & Analytics
 - Real-time business metrics dashboard
 - Admin dashboard: system-wide overview
 - User dashboard: personal performance tracking
@@ -43,7 +43,7 @@ A modern, full-featured Customer Relationship Management (CRM) application built
   - Active follow-ups tracking
   - Potential revenue calculation
 
-### 🔌 REST API
+### REST API
 - Full RESTful API endpoints with authentication
 - Customer and lead API resources
 - Advanced filtering and searching
@@ -51,7 +51,7 @@ A modern, full-featured Customer Relationship Management (CRM) application built
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 crm_project/
@@ -73,7 +73,7 @@ crm_project/
 
 ---
 
-## 💻 Technology Stack
+## Technology Stack
 
 | Category | Technology |
 |----------|-----------|
@@ -88,7 +88,7 @@ crm_project/
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 <p align="center">
   <img src="screenshots/crm-admin-dashboard.jpg" alt="Admin Dashboard View" width="400"/>
@@ -98,13 +98,13 @@ crm_project/
   <img src="screenshots/add-customer.jpg" alt="Add Customer View" width="400"/>
   <img src="screenshots/add-lead.jpg" alt="Add Lead View" width="400"/>
   <img src="screenshots/add-followup.jpg" alt="Add Followup View" width="400"/>
-  <img src="screenshots/register_crm.jpg" alt="Register View" width="400"/>
+  <img src="screenshots/crm-register.jpg" alt="Register View" width="400"/>
   <img src="screenshots/crm-login.jpg" alt="Login View" width="400"/>
 </p>
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - **Python** 3.10 or higher (Render deploys on 3.12 — see `runtime.txt`)
@@ -165,7 +165,7 @@ crm_project/
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 All API endpoints require JWT authentication.
 
@@ -195,7 +195,7 @@ DELETE /api/leads/{id}/           # Delete lead
 
 ---
 
-## ☁️ Deployment (Render)
+## Deployment (Render)
 
 This project is configured to deploy on [Render](https://render.com) as a web service.
 
@@ -212,7 +212,7 @@ SECRET_KEY=<generate a new one for production>
 DEBUG=False
 DATABASE_URL=<your Render PostgreSQL internal connection string>
 ```
-## 👤 User Roles & Permissions
+## User Roles & Permissions
 
 ### Admin (Superuser)
 - View all customers and leads
@@ -230,7 +230,7 @@ DATABASE_URL=<your Render PostgreSQL internal connection string>
 
 ---
 
-## 📖 Usage 
+## Usage 
 
 ### Creating a Customer
 1. Login to the application
@@ -268,7 +268,7 @@ DATABASE_URL=<your Render PostgreSQL internal connection string>
 
 ---
 
-## 🧠 What I Learned
+## What I Learned
 
 Through this project, I gained hands-on experience with:
 

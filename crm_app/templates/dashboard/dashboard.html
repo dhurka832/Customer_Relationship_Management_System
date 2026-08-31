@@ -8,7 +8,7 @@
 
     <div class="dash-greeting-row">
         <div>
-            <p class="dash-eyebrow">{% if is_admin %}Admin Overview{% else %}Sales Overview{% endif %}</p>
+            <p class="dash-eyebrow">{% if is_admin %}Admin Dashboard{% else %}Sales Overview{% endif %}</p>
             <h1 class="dash-greeting" id="dash-greeting" data-username="{{ user.first_name|default:user.username }}">
                 Welcome back.
             </h1>
