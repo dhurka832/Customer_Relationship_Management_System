@@ -58,22 +58,23 @@ crm_project/
 ├── crm_app/                  
 │   ├── static/                
 │   │   ├── css/               
+│   │   │   └── style.css
 │   │   └── js/
+│   │       ├── app.js          # Core UI helpers (table filters, input guards, clipboard copy)
+│   │       ├── auth.js         # Password strength meter, field toggles, auth form loaders
+│   │       └── dashboard.js    # Metric count-up animations, live clock, time greetings
 │   ├── templates/              
 │   └── migrations/
 ├── crm_project/               
 ├── staticfiles/                
 ├── screenshots/                 
-├── build.sh                    
-├── Procfile                    
-├── runtime.txt                 
-├── requirements.txt
-└── manage.py
+├── requirements.txt                    
+├── manage.py                 
 ```
 
 ---
 
-## Technology Stack
+## Technology Stack & Architecture
 
 | Category | Technology |
 |----------|-----------|
@@ -81,10 +82,18 @@ crm_project/
 | **Database** | PostgreSQL |
 | **API** | Django REST Framework |
 | **Authentication** | Django Sessions & JWT API Auth (SimpleJWT) |
-| **Frontend** | Pure HTML, CSS, Bootstrap 5 |
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript, Bootstrap 5 |
 | **Filtering** | Standard HTML GET Forms & Django ORM (django-filter) |
 | **Static Files** | WhiteNoise (compressed, hashed, served directly by Django) |
 | **Deployment** | Render (Gunicorn + `build.sh`) |
+
+### Frontend JavaScript Architecture
+
+The frontend logic is modularized into three lightweight vanilla JavaScript files with zero external JS library dependencies:
+
+- **`app.js`**: Global UI utilities including live list filtering (`initListFilter`), clipboard copying (`copyToClipboard`), action confirmation guards (`initDeleteConfirm`), required field visual shake animations (`initRequiredFieldGuard`), unsaved form changes warnings (`initUnsavedGuard`), and dynamic character counters (`initCharCount`).
+- **`auth.js`**: Interactive authentication controls including password visibility toggles (`togglePasswordField`), real-time password strength metering (`updatePasswordStrength`), password confirmation validation (`checkPasswordsMatch`), submission loading state (`setButtonLoading`), and smooth counter animations (`animateTickerValue`).
+- **`dashboard.js`**: Dashboard widgets featuring dynamic time-based greetings (`renderGreeting`), live header clock updates (`tickClock`), count-up metric value animations (`animateCount`), progress bar transitions (`animateRateBar`), and mobile sidebar toggle controls (`toggleSidebar`).
 
 ---
 
