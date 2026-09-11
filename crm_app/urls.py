@@ -16,4 +16,7 @@ urlpatterns = [
     path('lead/update/<int:pk>/',views.update_lead,name="update-lead"),
     path('lead/delete/<int:pk>',views.delete_lead,name="delete-lead"),
     path('followup/add/',views.add_followup,name="add-followup"),
+    path('email-generator/', views.email_generator_view, name="email-generator"),
+    path('email-generator/api/generate/', views.generate_email_api, name="generate-email-api"),
 ]
+

@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}AI Email Generator - CRM System{% endblock %}
+
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/email_generator.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="generator-card">
+        <div class="generator-header mt-3">
+            <h2>
+                <i class="bi bi-envelope-paper"></i> Personalised AI Email Generator
+            </h2>
+            <p class="mb-0 mt-3 text-gray-50 small">Generate targeted, high-converting follow-up emails for your CRM leads and customers using AI.</p>
+        </div>
+
+        <div class="generator-body">
+            <div class="row g-4">
+                <div class="col-lg-5 mt-0">
+                    <form id="emailGenForm" onsubmit="handleGenerateEmail(event)">
+                        {% csrf_token %}
+                        <div class="form-section-title">1. Select Target Recipient</div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Select Lead (Recommended)</label>
+                            <select class="form-select" id="leadSelect" onchange="onLeadSelectChange(this)">
+                                <option value="">-- Choose a Lead --</option>
+                                {% for l in leads %}
+                                    <option value="{{ l.id }}" data-customer-id="{{ l.customer.id }}" {% if selected_lead_id == l.id|stringformat:"s" %}selected{% endif %}>
+                                        {{ l.customer.name }} ({{ l.customer.company }}) - Status: {{ l.status }} (${{ l.expected_value }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Or Select Customer Directly</label>
+                            <select class="form-select" id="customerSelect">
+                                <option value="">-- Choose a Customer --</option>
+                                {% for c in customers %}
+                                    <option value="{{ c.id }}" {% if selected_customer_id == c.id|stringformat:"s" %}selected{% endif %}>
+                                        {{ c.name }} - {{ c.company }} ({{ c.email }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <hr class="my-4">
+                        <div class="form-section-title">2. Strategy & Tone</div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Email Objective / Goal</label>
+                            <select class="form-select" id="goalSelect">
+                                <option value="Follow-up after proposal">Follow-up after proposal sent</option>
+                                <option value="Schedule a demo meeting">Schedule a demo / call</option>
+                                <option value="Re-engage cold lead">Re-engage cold / inactive lead</option>
+                                <option value="Post-meeting thank you & next steps">Post-meeting next steps</option>
+                                <option value="Special discount / limited offer">Special discount or incentive</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Tone of Voice</label>
+                            <select class="form-select" id="toneSelect">
+                                <option value="Professional & Courteous">Professional & Courteous</option>
+                                <option value="Friendly & Approachable">Friendly & Approachable</option>
+                                <option value="Persuasive & Value-Focused">Persuasive & Value-Focused</option>
+                                <option value="Urgent & Action-Oriented">Urgent & Action-Oriented</option>
+                                <option value="Concise & Direct">Concise & Direct</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Custom Instructions (Optional)</label>
+                            <textarea class="form-control" id="extraNotes" rows="3" placeholder="e.g. Mention 10% discount expires this Friday, or reference our meeting on Tuesday."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-gradient w-100 mt-2" id="generateBtn">
+                            <i class="bi bi-stars me-1"></i> Generate AI Email
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Output Column -->
+                <div class="col-lg-7">
+                    <div class="form-section-title">3. Generated Result</div>
+
+                    <div id="placeholderBox" class="result-box text-center py-5">
+                        <i class="bi bi-magic display-4 text-muted mb-3 d-block"></i>
+                        <h5 class="text-muted">Select a customer or lead and click "Generate AI Email"</h5>
+                        <p class="text-muted small">Your customized email subject line and body will appear here.</p>
+                    </div>
+
+                    <div id="loadingBox" class="result-box text-center py-5 d-none">
+                        <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="visually-hidden">Generating...</span>
+                        </div>
+                        <h5 class="text-primary">Crafting personalized email with AI...</h5>
+                    </div>
+
+                    <div id="resultBox" class="result-box d-none">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary px-3 py-2"><i class="bi bi-check2-circle"></i> Generated Ready</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-secondary" onclick="copySubject()" title="Copy Subject">
+                                    <i class="bi bi-clipboard"></i> Copy Subject
+                                </button>
+                                <button class="btn btn-outline-secondary" onclick="copyBody()" title="Copy Body">
+                                    <i class="bi bi-clipboard-check"></i> Copy Body
+                                </button>
+                                <a id="mailtoLink" href="#" target="_blank" class="btn btn-primary">
+                                    <i class="bi bi-box-arrow-up-right"></i> Open Mail Client
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="result-subject">
+                            <span class="text-muted fw-normal">Subject:</span> <span id="resSubject"></span>
+                        </div>
+
+                        <div class="result-body-text" id="resBody"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function onLeadSelectChange(elem) {
+        const selectedOpt = elem.options[elem.selectedIndex];
+        const custId = selectedOpt.getAttribute('data-customer-id');
+        if (custId) {
+            document.getElementById('customerSelect').value = custId;
+        }
+    }
+
+    async function handleGenerateEmail(e) {
+        e.preventDefault();
+        const leadId = document.getElementById('leadSelect').value;
+        const customerId = document.getElementById('customerSelect').value;
+        const goal = document.getElementById('goalSelect').value;
+        const tone = document.getElementById('toneSelect').value;
+        const extraNotes = document.getElementById('extraNotes').value;
+
+        if (!leadId && !customerId) {
+            alert('Please select a Lead or Customer first.');
+            return;
+        }
+
+        document.getElementById('placeholderBox').classList.add('d-none');
+        document.getElementById('resultBox').classList.add('d-none');
+        document.getElementById('loadingBox').classList.remove('d-none');
+        document.getElementById('generateBtn').disabled = true;
+
+        try {
+            const response = await fetch("{% url 'generate-email-api' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    lead_id: leadId,
+                    customer_id: customerId,
+                    goal: goal,
+                    tone: tone,
+                    extra_notes: extraNotes
+                })
+            });
+
+            const data = await response.json();
+            document.getElementById('loadingBox').classList.add('d-none');
+
+            if (data.subject && data.body) {
+                document.getElementById('resSubject').textContent = data.subject;
+                document.getElementById('resBody').textContent = data.body;
+                
+                // Construct mailto link
+                const mailto = `mailto:?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.body)}`;
+                document.getElementById('mailtoLink').setAttribute('href', mailto);
+
+                document.getElementById('resultBox').classList.remove('d-none');
+            } else {
+                alert('Error generating email: ' + (data.error || 'Unknown error'));
+                document.getElementById('placeholderBox').classList.remove('d-none');
+            }
+        } catch (err) {
+            document.getElementById('loadingBox').classList.add('d-none');
+            document.getElementById('placeholderBox').classList.remove('d-none');
+            alert('Failed to connect to server.');
+        } finally {
+            document.getElementById('generateBtn').disabled = false;
+        }
+    }
+
+    function copySubject() {
+        const text = document.getElementById('resSubject').textContent;
+        navigator.clipboard.writeText(text);
+        alert('Subject copied to clipboard!');
+    }
+
+    function copyBody() {
+        const text = document.getElementById('resBody').textContent;
+        navigator.clipboard.writeText(text);
+        alert('Email body copied to clipboard!');
+    }
+</script>
+{% endblock %}

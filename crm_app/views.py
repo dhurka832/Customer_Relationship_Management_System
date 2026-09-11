@@ -11,6 +11,9 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .serializers import CustomerSerializer,LeadSerializer
 from rest_framework import filters 
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from crm_app.services.llm_service import generate_personalized_email
 
 @login_required
 def customer_list(request):
@@ -280,3 +283,51 @@ class LeadViewSet(viewsets.ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
     permission_classes = [IsAuthenticated]
+
+
+
+@login_required
+def email_generator_view(request):
+    if request.user.is_superuser:
+        customers = Customer.objects.all().order_by('name')
+        leads = Lead.objects.all().select_related('customer').order_by('-created_at')
+    else:
+        leads = Lead.objects.filter(assigned_to=request.user).select_related('customer').order_by('-created_at')
+        customer_ids = leads.values_list('customer_id', flat=True)
+        customers = Customer.objects.filter(id__in=customer_ids).order_by('name')
+
+    selected_customer_id = request.GET.get('customer_id', '')
+    selected_lead_id = request.GET.get('lead_id', '')
+
+    return render(request, "email_generator/email_generator.html", {
+        "customers": customers,
+        "leads": leads,
+        "selected_customer_id": selected_customer_id,
+        "selected_lead_id": selected_lead_id,
+    })
+
+@login_required
+@require_POST
+def generate_email_api(request):
+    import json
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        data = request.POST
+
+    customer_id = data.get("customer_id")
+    lead_id = data.get("lead_id")
+    goal = data.get("goal", "Follow-up")
+    tone = data.get("tone", "Professional")
+    extra_notes = data.get("extra_notes", "")
+
+    email_data = generate_personalized_email(
+        user=request.user,
+        customer_id=customer_id,
+        lead_id=lead_id,
+        goal=goal,
+        tone=tone,
+        extra_notes=extra_notes
+    )
+
+    return JsonResponse(email_data)

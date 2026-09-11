@@ -10,10 +10,16 @@
         <h1 class="page-title">{{ customer.name }}</h1>
         <p class="page-sub">Viewing details for {{ customer.name }}</p>
     </div>
-    <a href="{% url 'customer-list' %}" class="btn btn-secondary">
-        <i class="bi bi-arrow-left"></i> Back to Customers
-    </a>
+    <div class="d-flex gap-2">
+        <a href="{% url 'email-generator' %}?customer_id={{ customer.id }}" class="btn btn-primary">
+            <i class="bi bi-stars"></i> Generate AI Email
+        </a>
+        <a href="{% url 'customer-list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Customers
+        </a>
+    </div>
 </div>
+
 
 <div class="grid grid-2">
 

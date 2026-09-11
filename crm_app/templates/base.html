@@ -58,8 +58,17 @@
                             <span>Follow-ups</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{% url 'email-generator' %}"
+                           class="{% if 'email' in request.resolver_match.url_name %}active{% endif %}">
+                            <i class="bi bi-envelope-paper"></i>
+                            <span>Email Generator</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
         </aside>
 
         <main class="main-content">

@@ -21,6 +21,8 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG",default=False,cast=bool)
 
+GEMINI_API_KEY = config("GEMINI_API_KEY", default=config("LLM_API_KEY", default=""))
+
 ALLOWED_HOSTS = [
     ".onrender.com",
     "localhost",
@@ -41,6 +43,9 @@ INSTALLED_APPS = [
     'crm_app',
 ]
 
+LOGIN_URL = 'login'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -55,10 +60,10 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
+
     "DEFAULT_FILTER_BACKENDS": (
 
         "django_filters.rest_framework.DjangoFilterBackend",
