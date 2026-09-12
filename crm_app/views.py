@@ -205,7 +205,7 @@ def lead_list(request):
     if status_query:
         leads = leads.filter(status=status_query)
 
-    return render(request, "lead/lead_list.html", {
+    return render(request, "lead/lead-list.html", {
         'leads': leads, 
         "is_admin": is_admin,
         "search_query": search_query,
@@ -283,8 +283,6 @@ class LeadViewSet(viewsets.ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
     permission_classes = [IsAuthenticated]
-
-
 
 @login_required
 def email_generator_view(request):
