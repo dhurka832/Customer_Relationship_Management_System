@@ -109,4 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
       copyToClipboard(btn.getAttribute("data-copy-value"), btn);
     });
   });
+
+  // Stagger entrance animations for stat cards & list items
+  var animatableCards = document.querySelectorAll(".stat-card, .metric-card, .card, .table-responsive tbody tr");
+  animatableCards.forEach(function (el, index) {
+    var staggerClass = "stagger-" + ((index % 5) + 1);
+    el.classList.add("animate-fadein-up", staggerClass);
+  });
 });

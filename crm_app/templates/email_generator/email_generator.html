@@ -197,7 +197,6 @@
                 document.getElementById('resSubject').textContent = data.subject;
                 document.getElementById('resBody').textContent = data.body;
                 
-                // Construct mailto link
                 const mailto = `mailto:?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.body)}`;
                 document.getElementById('mailtoLink').setAttribute('href', mailto);
 

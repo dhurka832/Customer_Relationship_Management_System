@@ -784,15 +784,161 @@ select.form-control {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-.animate-fadein  { animation: fadeIn  0.4s ease-out; }
-.animate-slideup { animation: slideUp 0.4s ease-out; }
+/* Global Smooth Transitions & Micro-Interactions */
+.animate-fadein  { animation: fadeIn 0.45s ease-out forwards; }
+.animate-slideup { animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fadein-up { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-.dashboard-container { animation: fadeIn 0.4s ease-out; }
-.customer-list-container { animation: fadeIn 0.4s ease-out; }
+.dashboard-container,
+.customer-list-container,
+.lead-list-container,
+.page-container {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Delay Helpers */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+/* Interactive Hover Lifts & Dynamic Shadows */
+.stat-card, 
+.card, 
+.info-card,
+.generator-card,
+.auth-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease;
+}
+
+.stat-card:hover, 
+.card:hover, 
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -6px rgba(99, 102, 241, 0.15), 0 6px 16px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* Sidebar Menu Hover Transitions */
+.sidebar-menu a {
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-menu a:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-menu a.active {
+  transform: translateX(4px);
+  box-shadow: inset 3px 0 0 var(--primary-light);
+}
+
+/* Button Click & Hover Animations */
+.btn {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -3px rgba(99, 102, 241, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-primary, .btn-gradient {
+  background-size: 200% 200%;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-gradient:hover {
+  background-position: right center;
+}
+
+/* Form Controls Smooth Focus Effect */
+.form-control, .form-select {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  transform: translateY(-1px);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* Table Row Hover & Animation */
+.table-responsive tbody tr {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.table-responsive tbody tr:hover {
+  transform: scale(1.002) translateY(-1px);
+  background-color: rgba(99, 102, 241, 0.035) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Status Badges Subtle Animation */
+.badge {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+/* Alert Notification Entrance */
+.alert {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
 
 .progress {
   background: var(--gray-200);
@@ -801,7 +947,7 @@ select.form-control {
 }
 
 .progress-bar {
-  transition: width 0.6s ease;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   height: 100%;
 }
 

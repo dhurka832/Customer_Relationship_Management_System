@@ -141,9 +141,10 @@
                                 </td>
                                 <td>
                                     <div class="table-actions">
-                                        <a href="{% url 'email-generator' %}?lead_id={{ lead.id }}" class="btn btn-small btn-outline-primary" title="Generate AI Email">
-                                            <i class="bi bi-envelope-paper"></i> Email
-                                        </a>
+                                            <a href="{% url 'email-generator' %}?lead_id={{ lead.id }}" class="btn btn-medium btn-outline-primary m-2" title="Generate AI Email">
+                                                <i class="bi bi-envelope-paper"></i> Email
+                                            </a>
+                                        
                                         {% if is_admin %}
                                             <a href="{% url 'update-lead' lead.id %}" class="btn btn-small btn-outline-warning" title="Edit">
                                                 <i class="bi bi-pencil"></i>
