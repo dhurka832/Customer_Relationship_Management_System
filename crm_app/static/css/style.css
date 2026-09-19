@@ -821,7 +821,6 @@ select.form-control {
   to { transform: rotate(360deg); }
 }
 
-/* Global Smooth Transitions & Micro-Interactions */
 .animate-fadein  { animation: fadeIn 0.45s ease-out forwards; }
 .animate-slideup { animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-fadein-up { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -833,14 +832,12 @@ select.form-control {
   animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Staggered Delay Helpers */
 .stagger-1 { animation-delay: 0.05s; }
 .stagger-2 { animation-delay: 0.10s; }
 .stagger-3 { animation-delay: 0.15s; }
 .stagger-4 { animation-delay: 0.20s; }
 .stagger-5 { animation-delay: 0.25s; }
 
-/* Interactive Hover Lifts & Dynamic Shadows */
 .stat-card, 
 .card, 
 .info-card,
@@ -858,7 +855,6 @@ select.form-control {
   box-shadow: 0 14px 28px -6px rgba(99, 102, 241, 0.15), 0 6px 16px -4px rgba(0, 0, 0, 0.06);
 }
 
-/* Sidebar Menu Hover Transitions */
 .sidebar-menu a {
   position: relative;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -874,7 +870,6 @@ select.form-control {
   box-shadow: inset 3px 0 0 var(--primary-light);
 }
 
-/* Button Click & Hover Animations */
 .btn {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s ease,
@@ -900,7 +895,6 @@ select.form-control {
   background-position: right center;
 }
 
-/* Form Controls Smooth Focus Effect */
 .form-control, .form-select {
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
@@ -911,7 +905,6 @@ select.form-control {
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
-/* Table Row Hover & Animation */
 .table-responsive tbody tr {
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -922,7 +915,6 @@ select.form-control {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-/* Status Badges Subtle Animation */
 .badge {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: inline-flex;
@@ -934,7 +926,6 @@ select.form-control {
   transform: scale(1.05);
 }
 
-/* Alert Notification Entrance */
 .alert {
   animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform 0.2s ease, opacity 0.2s ease;
